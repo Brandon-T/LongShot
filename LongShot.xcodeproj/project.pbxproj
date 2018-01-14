@@ -45,6 +45,7 @@
 		5E92CB881FFB4E800081A255 /* ProtocolInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB871FFB4E800081A255 /* ProtocolInjection.swift */; };
 		5E9436BD1FFDCE700038DE97 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */; };
 		5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D40200BEFC20049DA61 /* MemoryMap.swift */; };
+		5EC76D44200C055B0049DA61 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D43200C055B0049DA61 /* Promise.swift */; };
 		5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021B2000732C00E9817D /* Array+Utilities.swift */; };
 		5ECD021E2000864500E9817D /* UIApplication+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */; };
 		5EF197892001C7D100061671 /* Target+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF197882001C7D100061671 /* Target+Events.swift */; };
@@ -91,6 +92,7 @@
 		5E92CB871FFB4E800081A255 /* ProtocolInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolInjection.swift; sourceTree = "<group>"; };
 		5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 		5EC76D40200BEFC20049DA61 /* MemoryMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMap.swift; sourceTree = "<group>"; };
+		5EC76D43200C055B0049DA61 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		5ECD021B2000732C00E9817D /* Array+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utilities.swift"; sourceTree = "<group>"; };
 		5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Convenience.swift"; sourceTree = "<group>"; };
 		5EF197882001C7D100061671 /* Target+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Target+Events.swift"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5310CA200BE728005334D8 /* Native */,
+				5EC76D42200C05460049DA61 /* Promise */,
 				5E705069200AFA8000736065 /* CoreGraphics */,
 				5E868A82200299CC0000B38C /* Video */,
 				5E868A81200299C80000B38C /* Audio */,
@@ -324,6 +327,14 @@
 			path = Security;
 			sourceTree = "<group>";
 		};
+		5EC76D42200C05460049DA61 /* Promise */ = {
+			isa = PBXGroup;
+			children = (
+				5EC76D43200C055B0049DA61 /* Promise.swift */,
+			);
+			path = Promise;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -426,6 +437,7 @@
 				5E92CB631FFB3D980081A255 /* UICollectionView+Reusability.swift in Sources */,
 				5E92CB731FFB48AA0081A255 /* OrderedDictionary.swift in Sources */,
 				5E92CB591FFB37E40081A255 /* UIFont+Utilities.swift in Sources */,
+				5EC76D44200C055B0049DA61 /* Promise.swift in Sources */,
 				5E92CB861FFB4DA20081A255 /* Invocation.swift in Sources */,
 				5E92CB881FFB4E800081A255 /* ProtocolInjection.swift in Sources */,
 				5E3C37E4200059B700B24EA3 /* DisplayLinkAnimator.swift in Sources */,

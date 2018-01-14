@@ -14,6 +14,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let promise = Promise<Int> { (resolve, reject) in
+            resolve(100)
+            reject(RuntimeError("Test"))
+        }
+        
+        promise.then({ (result) in
+            print(result)
+        })
+        .catch({ (error) in
+            print(error)
+        })
+        
+        
+        
         let navigationBar = UINavigationBar()
         self.view.addSubview(navigationBar)
         NSLayoutConstraint.activate([
