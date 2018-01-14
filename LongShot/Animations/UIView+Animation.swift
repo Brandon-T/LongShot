@@ -17,6 +17,6 @@ private struct LayerAnimation {
 
 extension CALayer {
     func animate() {
-        self.action(forKey: <#T##String#>)
+        
     }
 }

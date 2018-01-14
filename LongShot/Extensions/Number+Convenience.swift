@@ -8,6 +8,20 @@
 
 import Foundation
 
+public extension Int {
+    public static func random() -> Int {
+        return Int(arc4random_uniform(UInt32(Int.max)))
+    }
+    
+    public static func random(max: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(max)))
+    }
+    
+    public static func random(min: Int, max: Int) -> Int {
+        return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
+    }
+}
+
 public extension Float {
     public func toDegrees() -> Float {
         return self * .pi / 180.0
@@ -23,6 +37,14 @@ public extension Float {
     
     public func asCurrency(locale: Locale = Locale.current) -> String? {
         return NumberFormatter.currencyFormatter(locale: locale).string(from: NSNumber(value: self))
+    }
+    
+    public static func random() -> Float {
+        return Float(arc4random()) / Float(UInt32.max)
+    }
+    
+    public static func random(min: Float, max: Float) -> Float {
+        return Float.random() * (max - min) + min
     }
 }
 
@@ -42,6 +64,14 @@ public extension Double {
     public func asCurrency(locale: Locale = Locale.current) -> String? {
         return NumberFormatter.currencyFormatter(locale: locale).string(from: NSNumber(value: self))
     }
+    
+    public static func random() -> Double {
+        return Double(arc4random()) / Double(UInt32.max)
+    }
+    
+    public static func random(min: Double, max: Double) -> Double {
+        return Double.random() * (max - min) + min
+    }
 }
 
 public extension CGFloat {
@@ -55,6 +85,14 @@ public extension CGFloat {
     
     public func equals(other: CGFloat, delta: CGFloat = CGFloat.ulpOfOne) -> Bool {
         return fabs(self - other) < delta
+    }
+    
+    public static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+    
+    public static func random(min: CGFloat, max: CGFloat) -> CGFloat {
+        return CGFloat.random() * (max - min) + min
     }
 }
 

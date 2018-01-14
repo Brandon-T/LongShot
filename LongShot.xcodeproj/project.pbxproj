@@ -44,6 +44,7 @@
 		5E92CB861FFB4DA20081A255 /* Invocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB851FFB4DA20081A255 /* Invocation.swift */; };
 		5E92CB881FFB4E800081A255 /* ProtocolInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB871FFB4E800081A255 /* ProtocolInjection.swift */; };
 		5E9436BD1FFDCE700038DE97 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */; };
+		5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D40200BEFC20049DA61 /* MemoryMap.swift */; };
 		5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021B2000732C00E9817D /* Array+Utilities.swift */; };
 		5ECD021E2000864500E9817D /* UIApplication+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */; };
 		5EF197892001C7D100061671 /* Target+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF197882001C7D100061671 /* Target+Events.swift */; };
@@ -89,6 +90,7 @@
 		5E92CB851FFB4DA20081A255 /* Invocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invocation.swift; sourceTree = "<group>"; };
 		5E92CB871FFB4E800081A255 /* ProtocolInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolInjection.swift; sourceTree = "<group>"; };
 		5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
+		5EC76D40200BEFC20049DA61 /* MemoryMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMap.swift; sourceTree = "<group>"; };
 		5ECD021B2000732C00E9817D /* Array+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utilities.swift"; sourceTree = "<group>"; };
 		5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Convenience.swift"; sourceTree = "<group>"; };
 		5EF197882001C7D100061671 /* Target+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Target+Events.swift"; sourceTree = "<group>"; };
@@ -136,6 +138,21 @@
 				5E3C37EC2000662600B24EA3 /* RuntimeError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		5E5310CA200BE728005334D8 /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				5EC76D40200BEFC20049DA61 /* MemoryMap.swift */,
+			);
+			path = Native;
+			sourceTree = "<group>";
+		};
+		5E705069200AFA8000736065 /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreGraphics;
 			sourceTree = "<group>";
 		};
 		5E868A7F200299B90000B38C /* Bluetooth */ = {
@@ -186,6 +203,8 @@
 		5E92CB401FFB267A0081A255 /* LongShot */ = {
 			isa = PBXGroup;
 			children = (
+				5E5310CA200BE728005334D8 /* Native */,
+				5E705069200AFA8000736065 /* CoreGraphics */,
 				5E868A82200299CC0000B38C /* Video */,
 				5E868A81200299C80000B38C /* Audio */,
 				5E868A80200299C20000B38C /* Sockets */,
@@ -386,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E92CB691FFB46340081A255 /* Transformation+Algorithm.swift in Sources */,
+				5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */,
 				5E92CB531FFB32560081A255 /* NSObject+Association.swift in Sources */,
 				5E92CB611FFB3D770081A255 /* UITableView+Reusability.swift in Sources */,
 				5E92CB5B1FFB380B0081A255 /* Number+Convenience.swift in Sources */,
@@ -560,6 +580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.LongShot;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -583,6 +604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.LongShot;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
