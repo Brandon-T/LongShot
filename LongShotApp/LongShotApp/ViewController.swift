@@ -15,16 +15,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let promise = Promise<Int> { (resolve, reject) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 2.0, execute: {
                 resolve(100)
             })
         }
         
-        promise.then { (i) in
+        let future = Future(promise)
+        future.onCompletion({ (i) in
             print(i)
-        }.then { (i) in
-            print(i)
+        }) { (e) in
+            print(e)
         }
+        
+        future.onSuccess { (i) in
+            print("HERE")
+        }
+        
+        try! print("Meh \(future.wait())")
         
         
         
