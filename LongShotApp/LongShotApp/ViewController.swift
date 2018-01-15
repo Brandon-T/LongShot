@@ -14,26 +14,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let promise = Promise<Int> { (resolve, reject) in
-            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 2.0, execute: {
-                resolve(100)
-            })
-        }
-        
-        let future = Future(promise)
-        future.onCompletion({ (i) in
-            print(i)
-        }) { (e) in
-            print(e)
-        }
-        
-        future.onSuccess { (i) in
-            print("HERE")
-        }
-        
-        try! print("Meh \(future.wait())")
-        
-        
         
         let navigationBar = UINavigationBar()
         self.view.addSubview(navigationBar)

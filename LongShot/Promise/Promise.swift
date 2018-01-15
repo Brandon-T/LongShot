@@ -29,14 +29,16 @@ public class Promise<T> {
         return [PromiseTask<T>]()
     }()
     
+    private init() {
+        self.queue = DispatchQueue(label: "com.long.shot.promise.queue", qos: .default)
+    }
+    
     public convenience init(_ task: @escaping ( _ resolve: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void) throws -> Void) {
         self.init(nil, task: task)
     }
     
-    public init(_ on: DispatchQueue? = nil, task: @escaping (_ resolve: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void) throws -> Void) {
-        
-        self.queue = DispatchQueue(label: "com.long.shot.promise.queue", qos: .default)
-        
+    public convenience init(_ on: DispatchQueue? = nil, task: @escaping (_ resolve: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void) throws -> Void) {
+        self.init()
         let queue = on ?? DispatchQueue.global(qos: .default)
         queue.async {
             do {
@@ -61,15 +63,11 @@ public class Promise<T> {
     }
     
     public func getValue() -> T? {
-        return self.queue.sync {
-            return self.value
-        }
+        return self.queue.sync { return self.value }
     }
     
     public func getError() -> Error? {
-        return self.queue.sync {
-            return self.error
-        }
+        return self.queue.sync { return self.error }
     }
     
     public func fulfill(_ result: T) {
@@ -92,6 +90,7 @@ public class Promise<T> {
         }
     }
     
+    //Regular Then-able's with Void return type
     @discardableResult
     public func then(_ onFulfilled: @escaping (T) -> Void) -> Promise<T> {
         return self.then(onFulfilled, { _ in })
@@ -109,14 +108,54 @@ public class Promise<T> {
     
     @discardableResult
     public func then(_ on: DispatchQueue? = nil, _ onFulfilled: @escaping (T) -> Void, _ onRejected: @escaping (Error) -> Void) -> Promise<T> {
-        
         self.queue.async {
             let queue = on ?? DispatchQueue.main
             self.tasks.append(PromiseTask<T>(queue: queue, onFulfill: onFulfilled, onRejected: onRejected))
         }
-        
         self.doResolve()
         return self
+    }
+    
+    //Coercive Then-able's (allow to return a different type of `value` for then block)
+    @discardableResult
+    public func then<Value>(_ onFulfilled: @escaping (T) throws -> Value) -> Promise<Value> {
+        return self.then({ (value) -> Promise<Value> in
+            do {
+                let promise = Promise<Value>()
+                promise.state = .fulfilled
+                promise.value = try onFulfilled(value)
+                return promise
+            } catch let error {
+                let promise = Promise<Value>()
+                promise.state = .rejected
+                promise.error = error
+                return promise
+            }
+        })
+    }
+    
+    //Coercive Then-able's (allow to return a different type of `promise` for then block)
+    @discardableResult
+    public func then<Value>(_ onFulfilled: @escaping (T) throws -> Promise<Value>) -> Promise<Value> {
+        return self.then(nil, onFulfilled)
+    }
+    
+    //Coercive Then-able's (allow to return a different type of `promise` for then block)
+    @discardableResult
+    public func then<Value>(_ on: DispatchQueue? = nil, _ onFulfilled: @escaping (T) throws -> Promise<Value>) -> Promise<Value> {
+        return Promise<Value>({ [weak self] fulfill, reject in
+            let queue = on ?? DispatchQueue.main
+            self?.tasks.append(PromiseTask<T>(queue: queue, onFulfill: { (value) in
+                do {
+                    try onFulfilled(value).then(fulfill, reject)
+                }
+                catch let error {
+                    reject(error)
+                }
+            }, onRejected: { (error) in
+                reject(error)
+            }))
+        })
     }
     
     @discardableResult
