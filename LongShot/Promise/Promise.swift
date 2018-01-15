@@ -29,11 +29,11 @@ public class Promise<T> {
         return [PromiseTask<T>]()
     }()
     
-    public convenience init(_ task: @escaping ((T) -> Void, (Error) -> Void) throws -> Void) {
+    public convenience init(_ task: @escaping ( _ resolve: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void) throws -> Void) {
         self.init(nil, task: task)
     }
     
-    public init(_ on: DispatchQueue? = nil, task: @escaping (_ resolve: (T) -> Void, _ reject: (Error) -> Void) throws -> Void) {
+    public init(_ on: DispatchQueue? = nil, task: @escaping (_ resolve: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void) throws -> Void) {
         
         self.queue = DispatchQueue(label: "com.long.shot.promise.queue", qos: .default)
         
@@ -74,7 +74,7 @@ public class Promise<T> {
     
     public func fulfill(_ result: T) {
         if self.isPending() {
-            self.queue.sync { [unowned self]() in
+            self.queue.sync {
                 self.value = result
                 self.state = .fulfilled
             }
@@ -84,7 +84,7 @@ public class Promise<T> {
     
     public func reject(_ error: Error) {
         if self.isPending() {
-            self.queue.sync { [unowned self]() in
+            self.queue.sync {
                 self.error = error
                 self.state = .rejected
             }
@@ -110,7 +110,7 @@ public class Promise<T> {
     @discardableResult
     public func then(_ on: DispatchQueue? = nil, _ onFulfilled: @escaping (T) -> Void, _ onRejected: @escaping (Error) -> Void) -> Promise<T> {
         
-        self.queue.async { [unowned self]() in
+        self.queue.async {
             let queue = on ?? DispatchQueue.main
             self.tasks.append(PromiseTask<T>(queue: queue, onFulfill: onFulfilled, onRejected: onRejected))
         }
@@ -130,7 +130,7 @@ public class Promise<T> {
     }
     
     private func doResolve() {
-        self.queue.async { [unowned self]() in
+        self.queue.async {
             if self.state != .pending {
                 self.tasks.forEach({ [unowned self](task) in
                     if self.state == .fulfilled {

@@ -46,6 +46,7 @@
 		5E9436BD1FFDCE700038DE97 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */; };
 		5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D40200BEFC20049DA61 /* MemoryMap.swift */; };
 		5EC76D44200C055B0049DA61 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D43200C055B0049DA61 /* Promise.swift */; };
+		5EC76D47200C245D0049DA61 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D46200C245D0049DA61 /* Future.swift */; };
 		5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021B2000732C00E9817D /* Array+Utilities.swift */; };
 		5ECD021E2000864500E9817D /* UIApplication+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */; };
 		5EF197892001C7D100061671 /* Target+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF197882001C7D100061671 /* Target+Events.swift */; };
@@ -93,6 +94,7 @@
 		5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 		5EC76D40200BEFC20049DA61 /* MemoryMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMap.swift; sourceTree = "<group>"; };
 		5EC76D43200C055B0049DA61 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		5EC76D46200C245D0049DA61 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		5ECD021B2000732C00E9817D /* Array+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utilities.swift"; sourceTree = "<group>"; };
 		5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Convenience.swift"; sourceTree = "<group>"; };
 		5EF197882001C7D100061671 /* Target+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Target+Events.swift"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5310CA200BE728005334D8 /* Native */,
+				5EC76D45200C24500049DA61 /* Future */,
 				5EC76D42200C05460049DA61 /* Promise */,
 				5E705069200AFA8000736065 /* CoreGraphics */,
 				5E868A82200299CC0000B38C /* Video */,
@@ -335,6 +338,14 @@
 			path = Promise;
 			sourceTree = "<group>";
 		};
+		5EC76D45200C24500049DA61 /* Future */ = {
+			isa = PBXGroup;
+			children = (
+				5EC76D46200C245D0049DA61 /* Future.swift */,
+			);
+			path = Future;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -451,6 +462,7 @@
 				5E4C61F62002D51100602D81 /* UIScrollView+Utilities.swift in Sources */,
 				5E92CB5F1FFB3B4A0081A255 /* NSDate+Convenience.swift in Sources */,
 				5E92CB7C1FFB4BF90081A255 /* Block.swift in Sources */,
+				5EC76D47200C245D0049DA61 /* Future.swift in Sources */,
 				5E92CB651FFB42480081A255 /* CGRect+Convenience.swift in Sources */,
 				5E92CB791FFB4AE80081A255 /* PDFReader.swift in Sources */,
 				5EF197892001C7D100061671 /* Target+Events.swift in Sources */,

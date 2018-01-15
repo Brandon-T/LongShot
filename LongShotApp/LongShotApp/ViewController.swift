@@ -15,16 +15,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let promise = Promise<Int> { (resolve, reject) in
-            resolve(100)
-            reject(RuntimeError("Test"))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                resolve(100)
+            })
         }
         
-        promise.then({ (result) in
-            print(result)
-        })
-        .catch({ (error) in
-            print(error)
-        })
+        promise.then { (i) in
+            print(i)
+        }.then { (i) in
+            print(i)
+        }
         
         
         
