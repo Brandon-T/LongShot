@@ -13,6 +13,8 @@
 		5E3C37ED2000662600B24EA3 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37EC2000662600B24EA3 /* RuntimeError.swift */; };
 		5E3C37EF20006F6100B24EA3 /* UIGestureRecognizer+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */; };
 		5E4C61F62002D51100602D81 /* UIScrollView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C61F52002D51100602D81 /* UIScrollView+Utilities.swift */; };
+		5E593F81200E3221005070BC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F80200E3221005070BC /* ImageCache.swift */; };
+		5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F83200EDB04005070BC /* Timer+Events.swift */; };
 		5E5EB7E12001565000C55CE4 /* CALayer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */; };
 		5E5EB7E32001708800C55CE4 /* CGPoint+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB7E22001708800C55CE4 /* CGPoint+Convenience.swift */; };
 		5E868A842002A0E60000B38C /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E868A832002A0E50000B38C /* AudioPlayer.swift */; };
@@ -59,6 +61,8 @@
 		5E3C37EC2000662600B24EA3 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Event.swift"; sourceTree = "<group>"; };
 		5E4C61F52002D51100602D81 /* UIScrollView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utilities.swift"; sourceTree = "<group>"; };
+		5E593F80200E3221005070BC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		5E593F83200EDB04005070BC /* Timer+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Events.swift"; sourceTree = "<group>"; };
 		5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Convenience.swift"; sourceTree = "<group>"; };
 		5E5EB7E22001708800C55CE4 /* CGPoint+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Convenience.swift"; sourceTree = "<group>"; };
 		5E868A832002A0E50000B38C /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
@@ -152,6 +156,14 @@
 			path = Native;
 			sourceTree = "<group>";
 		};
+		5E593F7F200E320A005070BC /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				5E593F80200E3221005070BC /* ImageCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		5E705069200AFA8000736065 /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +222,7 @@
 				5E5310CA200BE728005334D8 /* Native */,
 				5EC76D45200C24500049DA61 /* Future */,
 				5EC76D42200C05460049DA61 /* Promise */,
+				5E593F7F200E320A005070BC /* Cache */,
 				5E705069200AFA8000736065 /* CoreGraphics */,
 				5E868A82200299CC0000B38C /* Video */,
 				5E868A81200299C80000B38C /* Audio */,
@@ -237,6 +250,7 @@
 			children = (
 				5EF197882001C7D100061671 /* Target+Events.swift */,
 				5E92CB501FFB32210081A255 /* UIControl+Events.swift */,
+				5E593F83200EDB04005070BC /* Timer+Events.swift */,
 				5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */,
 				5E92CB521FFB32560081A255 /* NSObject+Association.swift */,
 				5E92CB541FFB32900081A255 /* UIView+AutoLayout.swift */,
@@ -368,6 +382,7 @@
 				5E92CB3A1FFB267A0081A255 /* Frameworks */,
 				5E92CB3B1FFB267A0081A255 /* Headers */,
 				5E92CB3C1FFB267A0081A255 /* Resources */,
+				5E593F82200ED941005070BC /* Integrate Reveal */,
 			);
 			buildRules = (
 			);
@@ -421,6 +436,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E593F82200ED941005070BC /* Integrate Reveal */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Integrate Reveal";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "REVEAL_APP_PATH=$(mdfind kMDItemCFBundleIdentifier=\"com.ittybittyapps.Reveal2\" | head -n 1)\nBUILD_SCRIPT_PATH=\"${REVEAL_APP_PATH}/Contents/SharedSupport/Scripts/reveal_server_build_phase.sh\"\nif [ \"${REVEAL_APP_PATH}\" -a -e \"${BUILD_SCRIPT_PATH}\" ]; then\n\"${BUILD_SCRIPT_PATH}\"\nelse\necho \"Reveal Server not loaded: Cannot find a compatible Reveal app.\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5E92CB391FFB267A0081A255 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -432,6 +464,7 @@
 				5E92CB611FFB3D770081A255 /* UITableView+Reusability.swift in Sources */,
 				5E92CB5B1FFB380B0081A255 /* Number+Convenience.swift in Sources */,
 				5E92CB7E1FFB4C4C0081A255 /* Invocable.swift in Sources */,
+				5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */,
 				5E92CB5D1FFB3B120081A255 /* String+Convenience.swift in Sources */,
 				5E92CB801FFB4C690081A255 /* Runtime.swift in Sources */,
 				5E92CB551FFB32900081A255 /* UIView+AutoLayout.swift in Sources */,
@@ -468,6 +501,7 @@
 				5EF197892001C7D100061671 /* Target+Events.swift in Sources */,
 				5E3C37EF20006F6100B24EA3 /* UIGestureRecognizer+Event.swift in Sources */,
 				5ECD021E2000864500E9817D /* UIApplication+Convenience.swift in Sources */,
+				5E593F81200E3221005070BC /* ImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

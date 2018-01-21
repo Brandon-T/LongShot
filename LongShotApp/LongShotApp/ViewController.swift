@@ -9,20 +9,44 @@
 import UIKit
 import LongShot
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UINavigationBarDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let layer = CAShapeLayer()
+        layer.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0).centered(in: self.view.bounds)
+        layer.strokeStart = 0.0
+        layer.strokeEnd = 1.0
+        layer.fillColor = UIColor.clear.cgColor
+        layer.strokeColor = UIColor.red.cgColor
+        layer.path = UIBezierPath(arcCenter: layer.bounds.center(), radius: layer.frame.width / 2.0, startAngle: 0.0, endAngle: CGFloat(360.0.toRadians()), clockwise: true).cgPath
+        self.view.layer.addSublayer(layer)
         
-        
+        layer.animateGroup { (group) in
+            group.animate("strokeEnd", duration: 3.0, value: 0.0)
+            group.animate("position", duration: 3.0, delay: 0.0, dampingRatio: 0.2, initialVelocity: 0.0, options: [], value: CGPoint(x: layer.position.x, y: 500))
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    
+    func createCustomNavigation() {
         let navigationBar = UINavigationBar()
         self.view.addSubview(navigationBar)
         NSLayoutConstraint.activate([
             navigationBar.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             navigationBar.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             navigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
-        ])
+            ])
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        navigationBar.delegate = self
         
         let item = UINavigationItem(title: "Custom Navigation")
         let img = makeChevron(thickness: 3.0, size: CGSize(width: 22.0, height: 44.0), colour: nil)!
@@ -31,10 +55,10 @@ class ViewController: UIViewController {
         
         navigationBar.setItems([item], animated: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
     
     func makeChevron(thickness: CGFloat, size: CGSize, colour: UIColor? = nil) -> UIImage? {

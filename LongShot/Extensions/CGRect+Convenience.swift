@@ -38,15 +38,15 @@ public extension CGRect {
         set { self.origin.y = newValue }
     }
     
-    public var width: CGFloat {
-        get { return self.size.width }
-        set { self.size.width = newValue }
-    }
-    
-    public var height: CGFloat {
-        get { return self.size.height }
-        set { self.size.height = newValue }
-    }
+//    public var width: CGFloat {
+//        get { return self.size.width }
+//        set { self.size.width = newValue }
+//    }
+//
+//    public var height: CGFloat {
+//        get { return self.size.height }
+//        set { self.size.height = newValue }
+//    }
     
     public mutating func offset(dx: CGFloat, dy: CGFloat) -> CGRect {
         self = self.offsetBy(dx: dx, dy: dy)

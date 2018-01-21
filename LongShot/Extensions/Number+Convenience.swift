@@ -24,11 +24,11 @@ public extension Int {
 
 public extension Float {
     public func toDegrees() -> Float {
-        return self * .pi / 180.0
+        return self * 180.0 / .pi
     }
     
     public func toRadians() -> Float {
-        return self * 180.0 / .pi
+        return self * .pi / 180.0
     }
     
     public func equals(other: Float, delta: Float = Float.ulpOfOne) -> Bool {
@@ -50,11 +50,11 @@ public extension Float {
 
 public extension Double {
     public func toDegrees() -> Double {
-        return self * .pi / 180.0
+        return self * 180.0 / .pi
     }
     
     public func toRadians() -> Double {
-        return self * 180.0 / .pi
+        return self * .pi / 180.0
     }
     
     public func equals(other: Double, delta: Double = Double.ulpOfOne) -> Bool {
@@ -76,11 +76,11 @@ public extension Double {
 
 public extension CGFloat {
     public func toDegrees() -> CGFloat {
-        return self * .pi / 180.0
+        return self * 180.0 / .pi
     }
     
     public func toRadians() -> CGFloat {
-        return self * 180.0 / .pi
+        return self * .pi / 180.0
     }
     
     public func equals(other: CGFloat, delta: CGFloat = CGFloat.ulpOfOne) -> Bool {

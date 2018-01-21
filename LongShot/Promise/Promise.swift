@@ -8,18 +8,52 @@
 
 import Foundation
 
+
+/// An enum representing the internal state of a `Promise`.
+///
+/// - pending: The promise is currently pending (default state).
+/// - fulfilled: The promise has been fulfilled successfully.
+/// - rejected: The promise has encountered an error and cannot be fulfilled. It is rejected.
 private enum PromiseState {
     case pending
     case fulfilled
     case rejected
 }
 
+
+/// A structure representing a single internal executable task of a `Promise`.
+///
+/// - queue: The queue to on which to execute the callbacks `onFulfill` and `onRejected`.
+/// - fulfilled: The block to call when the task has been fulfilled successfully.
+/// - rejected: The block to call when the task has encountered an error and cannot be fulfilled (rejected).
 private struct PromiseTask<T> {
     let queue: DispatchQueue
     let onFulfill: (T) -> ()
     let onRejected: (Error) -> ()
 }
 
+
+/// A class used for synchronizing program execution in concurrent environments.
+/// A promise executes a task asynchronously and can be chained as though tasks were executed synchronously.
+///
+///     let promise = Promise({ (resolve, reject) in
+///         someAsyncNetworkTask({
+///             if (success) {
+///                 resolve(successfulValue)
+///             }
+///             else {
+///                 reject(error)
+///             }
+///         })
+///     })
+///
+///     promise.then {
+///         //print(successfulValue)
+///     }
+///     .catch { (error) in
+///         //print(error)
+///     }
+///
 public class Promise<T> {
     private var state: PromiseState = .pending
     private var value: T? = nil
@@ -33,10 +67,54 @@ public class Promise<T> {
         self.queue = DispatchQueue(label: "com.long.shot.promise.queue", qos: .default)
     }
     
+    
+    /// Constructor to create a promise that will execute its tasks on the default queue.
+    ///
+    /// - Parameter task: A block that takes two functions `resolve` and `reject`. If the task succeeds, the caller must invoke `resolve` with the value of the successful task. Otherwise the caller must invoke `reject` with the reason why the task failed (an error).
+    /// - Parameter resolve: A block that takes a parameter representing the type returned when this promise's task succeeds. If the task succeeds, the caller must invoke this block with the value of the successful task.
+    /// - Parameter reject: A block that takes an `Error` parameter when this promise's task fails. If the task fails, the caller must invoke this block with an `Error` describing the reason why the task failed.
+    ///
+    /// Example:
+    ///
+    ///     ````
+    ///     let promise = Promise({ (resolve, reject) in
+    ///         someAsyncNetworkTask({
+    ///             if (success) {
+    ///                 resolve(successfulValue)
+    ///             }
+    ///             else {
+    ///                 reject(error)
+    ///             }
+    ///         })
+    ///     })
+    ///     ````
+    ///
     public convenience init(_ task: @escaping ( _ resolve: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void) throws -> Void) {
         self.init(nil, task: task)
     }
     
+    /// Constructor to create a promise that will execute its tasks on the default queue.
+    ///
+    /// - Parameter on: A queue on which to execute the promise' tasks. This parameter is typically a backgrond queue.
+    /// - Parameter task: A block that takes two functions `resolve` and `reject`. If the task succeeds, the caller must invoke `resolve` with the value of the successful task. Otherwise the caller must invoke `reject` with the reason why the task failed (an error).
+    /// - Parameter resolve: A block that takes a parameter representing the type returned when this promise's task succeeds. If the task succeeds, the caller must invoke this block with the value of the successful task.
+    /// - Parameter reject: A block that takes an `Error` parameter when this promise's task fails. If the task fails, the caller must invoke this block with an `Error` describing the reason why the task failed.
+    ///
+    /// Example:
+    ///
+    ///     ````
+    ///     let promise = Promise({ (resolve, reject) in
+    ///         someAsyncNetworkTask({
+    ///             if (success) {
+    ///                 resolve(successfulValue)
+    ///             }
+    ///             else {
+    ///                 reject(error)
+    ///             }
+    ///         })
+    ///     })
+    ///     ````
+    ///
     public convenience init(_ on: DispatchQueue? = nil, task: @escaping (_ resolve: @escaping (T) -> Void, _ reject: @escaping (Error) -> Void) throws -> Void) {
         self.init()
         let queue = on ?? DispatchQueue.global(qos: .default)
