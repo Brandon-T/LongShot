@@ -13,19 +13,23 @@ class ViewController: UIViewController, UINavigationBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let layer = CAShapeLayer()
-        layer.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0).centered(in: self.view.bounds)
-        layer.strokeStart = 0.0
-        layer.strokeEnd = 1.0
-        layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.red.cgColor
-        layer.path = UIBezierPath(arcCenter: layer.bounds.center(), radius: layer.frame.width / 2.0, startAngle: 0.0, endAngle: CGFloat(360.0.toRadians()), clockwise: true).cgPath
-        self.view.layer.addSublayer(layer)
         
-        layer.animateGroup { (group) in
-            group.animate("strokeEnd", duration: 3.0, value: 0.0)
-            group.animate("position", duration: 3.0, delay: 0.0, dampingRatio: 0.2, initialVelocity: 0.0, options: [], value: CGPoint(x: layer.position.x, y: 500))
+        let promise = Promise<Int> { (resolve, reject) in
+            
+        }
+        
+        promise.then(DispatchQueue.main, { image in
+            
+        }, { error in
+            
+        })
+        
+        promise.then({ image in
+            
+            print(image)
+            
+        }).catch { (error) in
+            
         }
     }
 
