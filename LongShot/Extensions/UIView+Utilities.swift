@@ -20,7 +20,35 @@ public extension UIView {
     }
     
     public func getAllSubviews<T: UIView>() -> [T] {
-        return UIView.getAllSubviews(view: self) as [T]
+        return self.subviews.flatMap { subview -> [T] in
+            var result = subview.getAllSubviews() as [T]
+            if let view = subview as? T {
+                result.append(view)
+            }
+            return result
+        }
+    }
+
+    public func subviews(where: (_ view: UIView) -> Bool) -> [UIView] {
+        return self.subviews.flatMap { subview -> [UIView] in
+            var result = subview.subviews(where: `where`)
+            if `where`(subview) {
+                result.append(subview)
+            }
+            return result
+        }
+    }
+    
+    public func clone() throws -> Self {
+        return try self.cloneByArchiving()
+    }
+    
+    private func cloneByArchiving<T>() throws -> T {
+        let data = NSKeyedArchiver.archivedData(withRootObject: self)
+        if let view = NSKeyedUnarchiver.unarchiveObject(with: data) as? T {
+            return view
+        }
+        throw RuntimeError("Unable to clone view: \(self)")
     }
 }
 

@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-public final class CameraCaptureDevice : UIView, AVCaptureMetadataOutputObjectsDelegate
-{
+public final class CameraCaptureDevice : UIView, AVCaptureMetadataOutputObjectsDelegate {
     private var device: AVCaptureDevice?
     private var input: AVCaptureDeviceInput?
     private var output: AVCaptureMetadataOutput?

@@ -13,24 +13,6 @@ class ViewController: UIViewController, UINavigationBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let promise = Promise<Int> { (resolve, reject) in
-            
-        }
-        
-        promise.then(DispatchQueue.main, { image in
-            
-        }, { error in
-            
-        })
-        
-        promise.then({ image in
-            
-            print(image)
-            
-        }).catch { (error) in
-            
-        }
     }
 
     override func didReceiveMemoryWarning() {
