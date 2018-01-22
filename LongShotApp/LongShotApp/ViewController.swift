@@ -9,10 +9,74 @@
 import UIKit
 import LongShot
 
+
+class ContainerController : UIViewController {
+    private var currentController: UIViewController?
+    
+    func switchToController(controller: UIViewController, duration: TimeInterval) {
+        controller.view.frame = self.view.bounds
+        
+        if let currentController = self.currentController {
+            currentController.willMove(toParentViewController: nil)
+            self.addChildViewController(controller)
+            
+            self.transition(from: currentController, to: controller, duration: duration, options: .transitionCrossDissolve, animations: {
+                
+            }) { (completedTransition) in
+                currentController.removeFromParentViewController()
+                controller.didMove(toParentViewController: self)
+                currentController.view.removeFromSuperview()
+                self.currentController = controller
+            }
+        }
+        else {
+            self.addChildViewController(controller)
+            self.view.addSubview(controller.view)
+            controller.didMove(toParentViewController: self)
+        }
+    }
+}
+
+extension UIView {
+    func pushTransition(_ duration:CFTimeInterval) {
+        let animation:CATransition = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            kCAMediaTimingFunctionEaseInEaseOut)
+        animation.type = kCATransitionPush
+        animation.subtype = kCATransitionFromTop
+        animation.duration = duration
+        layer.add(animation, forKey: kCATransitionPush)
+    }
+}
+
 class ViewController: UIViewController, UINavigationBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let particle = UIView()
+        particle.frame = CGRect(0, 0, 10, 10)
+        particle.backgroundColor = UIColor.random()
+        
+        let emitterLayer = CAEmitterLayer()
+        emitterLayer.frame = CGRect(x: 0, y: 0, width: 100, height: 100).centered(in: self.view.bounds).offsetBy(dx: 0.0, dy: self.view.bounds.size.height / 2.0)
+        emitterLayer.emitterPosition = emitterLayer.bounds.center()
+        
+        let cell = CAEmitterCell()
+        cell.birthRate = 50
+        cell.lifetime = 10
+        cell.velocity = 200
+        
+        cell.emissionLongitude = CGFloat(-90.0).toRadians() //control direction of emission
+        cell.emissionRange = CGFloat(-45.0).toRadians() //control angle of emission
+        cell.contents = UIImage(named: "Particle")!.cgImage
+        cell.scale = 0.1 //control initial size of the cell
+        cell.scaleRange = 0.5 //control max size of the cell
+        cell.scaleSpeed = 0.2 //control how fast the cell grows
+        cell.alphaSpeed = -0.3  //-1.0 / lifetime  control the alpha of the cell
+        
+        emitterLayer.emitterCells = [cell]
+        self.view.layer.addSublayer(emitterLayer)
     }
 
     override func didReceiveMemoryWarning() {

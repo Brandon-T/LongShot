@@ -46,6 +46,10 @@ public extension Float {
     public static func random(min: Float, max: Float) -> Float {
         return Float.random() * (max - min) + min
     }
+    
+    public func scaleToRange(fMin: Float, fMax: Float, toMin: Float, toMax: Float) -> Float {
+        return (((toMax - toMax) * (self - fMin)) / (fMax - fMin)) + toMin
+    }
 }
 
 public extension Double {
@@ -72,6 +76,10 @@ public extension Double {
     public static func random(min: Double, max: Double) -> Double {
         return Double.random() * (max - min) + min
     }
+    
+    public func scaleToRange(fMin: Double, fMax: Double, toMin: Double, toMax: Double) -> Double {
+        return (((toMax - toMax) * (self - fMin)) / (fMax - fMin)) + toMin
+    }
 }
 
 public extension CGFloat {
@@ -93,6 +101,10 @@ public extension CGFloat {
     
     public static func random(min: CGFloat, max: CGFloat) -> CGFloat {
         return CGFloat.random() * (max - min) + min
+    }
+    
+    public func scaleToRange(fMin: CGFloat, fMax: CGFloat, toMin: CGFloat, toMax: CGFloat) -> CGFloat {
+        return (((toMax - toMax) * (self - fMin)) / (fMax - fMin)) + toMin
     }
 }
 

@@ -67,6 +67,10 @@ public extension UIColor {
         return 0
     }
     
+    public class func random() -> UIColor {
+        return UIColor(hex: UInt32(Int.random(min: 0, max: 0xFFFFFF)))
+    }
+    
     public func toString() -> String {
         return "#\(String(self.toHex(), radix: 16, uppercase: true))"
     }

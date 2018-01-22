@@ -52,6 +52,23 @@ public extension CGPoint {
         return atan2(self.y, self.x)
     }
     
+    public func rotated(around point: CGPoint, byAngle radians: CGFloat) -> CGPoint {
+        let transform = CGAffineTransform(translationX: -point.x, y: -point.y).rotated(by: radians).translatedBy(x: point.x, y: point.y)
+        return self.applying(transform)
+    }
+    
+    public func rotated(around point: CGPoint, byDegrees degrees: CGFloat) -> CGPoint {
+        let rotationSin = sin(degrees.toRadians())
+        let rotationCos = cos(degrees.toRadians())
+        let x = (self.x * rotationCos - self.y * rotationSin) + point.x
+        let y = (self.x * rotationSin + self.y * rotationCos) + point.y
+        return CGPoint(x: x, y: y)
+    }
+    
+    public func pointAtAngle(origin: CGPoint, distance: CGFloat, radians: CGFloat) -> CGPoint {
+        return CGPoint(x: origin.x + distance * cos(radians), y: origin.y + distance * sin(radians))
+    }
+    
     func isInCircle(center: CGPoint, radius: CGFloat) -> Bool {
         return self.distance(to: center) < radius
     }
