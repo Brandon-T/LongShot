@@ -67,6 +67,7 @@ internal extension EventTarget where T : UIControl {
                 strongSelf.object?.removeTarget(strongSelf, action: #selector(EventTarget.run(_:)), for: event)
             }
         }
+        self.addListener?()
     }
 }
 
@@ -85,6 +86,30 @@ internal extension EventTarget where T : UIGestureRecognizer {
                 strongSelf.object?.removeTarget(strongSelf, action: #selector(EventTarget.run(_:)))
             }
         }
+        
+        self.addListener?()
+    }
+}
+
+internal extension EventTarget where T : UIBarButtonItem {
+    convenience init(_ object: T, runnable: @escaping (T) -> Void) {
+        self.init(object, runnable: runnable)
+        
+        self.addListener = { [weak self]() in
+            if let strongSelf = self {
+                strongSelf.object?.target = strongSelf
+                strongSelf.object?.action = #selector(EventTarget.run(_:))
+            }
+        }
+        
+        self.removeListener = { [weak self]() in
+            if let strongSelf = self {
+                strongSelf.object?.target = nil
+                strongSelf.object?.action = nil
+            }
+        }
+        
+        self.addListener?()
     }
 }
 

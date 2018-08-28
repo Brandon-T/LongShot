@@ -76,7 +76,7 @@ public final class GenericCollectionSupplementaryView<ContentView> : UICollectio
         self.addSubview(self.view)
         self.preservesSuperviewLayoutMargins = false
         self.layoutMargins = .zero
-        self.view.pinTo(self.layoutMarginsGuide)
+        self.view.pin(to: self.layoutMarginsGuide)
     }
     
     public var viewMargins: UIEdgeInsets {
@@ -115,7 +115,7 @@ public final class GenericCollectionViewCell<ContentView> : UICollectionViewCell
         self.contentView.addSubview(self.view)
         self.contentView.preservesSuperviewLayoutMargins = false
         self.contentView.layoutMargins = .zero
-        self.view.pinTo(self.contentView.layoutMarginsGuide)
+        self.view.pin(to: self.contentView.layoutMarginsGuide)
     }
     
     public var viewMargins: UIEdgeInsets {

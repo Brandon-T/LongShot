@@ -76,7 +76,7 @@ public final class GenericTableSupplementaryView<ContentView> : UITableViewHeade
         self.addSubview(self.view)
         self.preservesSuperviewLayoutMargins = false
         self.layoutMargins = .zero
-        self.view.pinTo(self.layoutMarginsGuide)
+        self.view.pin(to: self.layoutMarginsGuide)
     }
     
     public var viewMargins: UIEdgeInsets {
@@ -126,7 +126,7 @@ public final class GenericTableCell<ContentView> : UITableViewCell where Content
         self.selectionStyle = .none
         self.contentView.preservesSuperviewLayoutMargins = false
         self.contentView.layoutMargins = .zero
-        self.view.pinTo(self.contentView.layoutMarginsGuide)
+        self.view.pin(to: self.contentView.layoutMarginsGuide)
     }
     
     public var viewMargins: UIEdgeInsets {

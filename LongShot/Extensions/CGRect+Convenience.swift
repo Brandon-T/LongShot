@@ -24,6 +24,7 @@ public extension CGRect {
 
 public extension CGRect {
     init(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
+        self.init()
         self.origin = CGPoint(x: x, y: y)
         self.size = CGSize(width: width, height: height)
     }

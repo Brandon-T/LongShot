@@ -80,6 +80,7 @@ public extension CGPoint {
 
 public extension CGPoint {
     init(_ x: CGFloat, _ y: CGFloat) {
+        self.init()
         self.x = x
         self.y = y
     }

@@ -13,6 +13,7 @@
 		5E3C37ED2000662600B24EA3 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37EC2000662600B24EA3 /* RuntimeError.swift */; };
 		5E3C37EF20006F6100B24EA3 /* UIGestureRecognizer+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */; };
 		5E4C61F62002D51100602D81 /* UIScrollView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C61F52002D51100602D81 /* UIScrollView+Utilities.swift */; };
+		5E55D03C20B232670036A96C /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55D03B20B232670036A96C /* Observer.swift */; };
 		5E593F81200E3221005070BC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F80200E3221005070BC /* ImageCache.swift */; };
 		5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F83200EDB04005070BC /* Timer+Events.swift */; };
 		5E5EB7E12001565000C55CE4 /* CALayer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */; };
@@ -46,6 +47,8 @@
 		5E92CB861FFB4DA20081A255 /* Invocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB851FFB4DA20081A255 /* Invocation.swift */; };
 		5E92CB881FFB4E800081A255 /* ProtocolInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB871FFB4E800081A255 /* ProtocolInjection.swift */; };
 		5E9436BD1FFDCE700038DE97 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */; };
+		5EB36E4A2134D6E300470253 /* UIBarButtonItem+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB36E492134D6E300470253 /* UIBarButtonItem+Events.swift */; };
+		5EB36E4C2134DA7B00470253 /* UIStackView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB36E4B2134DA7B00470253 /* UIStackView+Convenience.swift */; };
 		5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D40200BEFC20049DA61 /* MemoryMap.swift */; };
 		5EC76D44200C055B0049DA61 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D43200C055B0049DA61 /* Promise.swift */; };
 		5EC76D47200C245D0049DA61 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D46200C245D0049DA61 /* Future.swift */; };
@@ -61,6 +64,7 @@
 		5E3C37EC2000662600B24EA3 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Event.swift"; sourceTree = "<group>"; };
 		5E4C61F52002D51100602D81 /* UIScrollView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utilities.swift"; sourceTree = "<group>"; };
+		5E55D03B20B232670036A96C /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		5E593F80200E3221005070BC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		5E593F83200EDB04005070BC /* Timer+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Events.swift"; sourceTree = "<group>"; };
 		5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Convenience.swift"; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 		5E92CB851FFB4DA20081A255 /* Invocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invocation.swift; sourceTree = "<group>"; };
 		5E92CB871FFB4E800081A255 /* ProtocolInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolInjection.swift; sourceTree = "<group>"; };
 		5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
+		5EB36E492134D6E300470253 /* UIBarButtonItem+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Events.swift"; sourceTree = "<group>"; };
+		5EB36E4B2134DA7B00470253 /* UIStackView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Convenience.swift"; sourceTree = "<group>"; };
 		5EC76D40200BEFC20049DA61 /* MemoryMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMap.swift; sourceTree = "<group>"; };
 		5EC76D43200C055B0049DA61 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		5EC76D46200C245D0049DA61 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
@@ -154,6 +160,14 @@
 				5EC76D40200BEFC20049DA61 /* MemoryMap.swift */,
 			);
 			path = Native;
+			sourceTree = "<group>";
+		};
+		5E55D03A20B232590036A96C /* Observation */ = {
+			isa = PBXGroup;
+			children = (
+				5E55D03B20B232670036A96C /* Observer.swift */,
+			);
+			path = Observation;
 			sourceTree = "<group>";
 		};
 		5E593F7F200E320A005070BC /* Cache */ = {
@@ -219,6 +233,7 @@
 		5E92CB401FFB267A0081A255 /* LongShot */ = {
 			isa = PBXGroup;
 			children = (
+				5E55D03A20B232590036A96C /* Observation */,
 				5E5310CA200BE728005334D8 /* Native */,
 				5EC76D45200C24500049DA61 /* Future */,
 				5EC76D42200C05460049DA61 /* Promise */,
@@ -252,6 +267,7 @@
 				5E92CB501FFB32210081A255 /* UIControl+Events.swift */,
 				5E593F83200EDB04005070BC /* Timer+Events.swift */,
 				5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */,
+				5EB36E492134D6E300470253 /* UIBarButtonItem+Events.swift */,
 				5E92CB521FFB32560081A255 /* NSObject+Association.swift */,
 				5E92CB541FFB32900081A255 /* UIView+AutoLayout.swift */,
 				5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */,
@@ -270,6 +286,7 @@
 				5ECD021B2000732C00E9817D /* Array+Utilities.swift */,
 				5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */,
 				5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */,
+				5EB36E4B2134DA7B00470253 /* UIStackView+Convenience.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -399,7 +416,7 @@
 		5E92CB351FFB267A0081A255 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = XIO;
 				TargetAttributes = {
 					5E92CB3D1FFB267A0081A255 = {
@@ -459,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E92CB691FFB46340081A255 /* Transformation+Algorithm.swift in Sources */,
+				5E55D03C20B232670036A96C /* Observer.swift in Sources */,
 				5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */,
 				5E92CB531FFB32560081A255 /* NSObject+Association.swift in Sources */,
 				5E92CB611FFB3D770081A255 /* UITableView+Reusability.swift in Sources */,
@@ -488,6 +506,7 @@
 				5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */,
 				5E92CB571FFB36830081A255 /* UIColor+Conversions.swift in Sources */,
 				5E92CB821FFB4C860081A255 /* Function.swift in Sources */,
+				5EB36E4A2134D6E300470253 /* UIBarButtonItem+Events.swift in Sources */,
 				5E5EB7E12001565000C55CE4 /* CALayer+Convenience.swift in Sources */,
 				5E92CB4F1FFB27350081A255 /* CollectionViewPagingLayout.swift in Sources */,
 				5E05830B2002E6C3001CD80F /* UIView+Animation.swift in Sources */,
@@ -500,6 +519,7 @@
 				5E92CB791FFB4AE80081A255 /* PDFReader.swift in Sources */,
 				5EF197892001C7D100061671 /* Target+Events.swift in Sources */,
 				5E3C37EF20006F6100B24EA3 /* UIGestureRecognizer+Event.swift in Sources */,
+				5EB36E4C2134DA7B00470253 /* UIStackView+Convenience.swift in Sources */,
 				5ECD021E2000864500E9817D /* UIApplication+Convenience.swift in Sources */,
 				5E593F81200E3221005070BC /* ImageCache.swift in Sources */,
 			);
@@ -522,6 +542,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -529,6 +550,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -582,6 +604,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -589,6 +612,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

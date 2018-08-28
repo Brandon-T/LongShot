@@ -85,12 +85,12 @@ public extension String {
 public extension NSAttributedString {
     public func sizeToFit() -> CGSize {
         let constrainedSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-        let size = self.boundingRect(with: constrainedSize, options: .usesLineFragmentOrigin, context: nil).size
+        let size = self.boundingRect(with: constrainedSize, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         return CGSize(width: ceil(size.width), height: ceil(size.height))
     }
     
     public func sizeThatFits(_ boundingSize: CGSize) -> CGSize {
-        let size = self.boundingRect(with: boundingSize, options: .usesLineFragmentOrigin, context: nil).size
+        let size = self.boundingRect(with: boundingSize, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         return CGSize(width: ceil(size.width), height: ceil(size.height))
     }
 }

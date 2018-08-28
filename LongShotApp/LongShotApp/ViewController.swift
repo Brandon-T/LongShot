@@ -37,23 +37,144 @@ class ContainerController : UIViewController {
     }
 }
 
-extension UIView {
-    func pushTransition(_ duration:CFTimeInterval) {
-        let animation:CATransition = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name:
-            kCAMediaTimingFunctionEaseInEaseOut)
-        animation.type = kCATransitionPush
-        animation.subtype = kCATransitionFromTop
-        animation.duration = duration
-        layer.add(animation, forKey: kCATransitionPush)
+class AnimatableLabel : UIView {
+    private let textLayer = CATextLayer()
+    
+    private func numberOfLinesInText() -> Int {
+        if let string = self.textLayer.string as? NSAttributedString {
+            let textStorage = NSTextStorage(attributedString: string)
+            let textContainer = NSTextContainer(size: self.bounds.size)
+            let manager = NSLayoutManager()
+            manager.addTextContainer(textContainer)
+            textStorage.addLayoutManager(manager)
+            textContainer.lineFragmentPadding = 0
+            textContainer.lineBreakMode = .byWordWrapping
+            manager.glyphRange(for: textContainer)
+            
+            
+            var index = 0
+            var numberOfLines = 0
+            var range = NSMakeRange(0, 0)
+            let numberOfGlyphs = manager.numberOfGlyphs
+            
+            while (index < numberOfGlyphs) {
+                manager.lineFragmentRect(forGlyphAt: index, effectiveRange: &range)
+                index = NSMaxRange(range)
+                numberOfLines += 1
+            }
+            return numberOfLines - 1
+        }
+        return 0
+    }
+    
+    private func sizeThatFits(size: CGSize) -> CGSize {
+        if let string = self.textLayer.string as? NSAttributedString {
+            let path = CGMutablePath()
+            path.addRect(CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+
+            let frameSetter = CTFramesetterCreateWithAttributedString(string as CFAttributedString)
+            let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, nil)
+            let lines = CTFrameGetLines(frame) as NSArray
+            
+            var lineWidth: CGFloat = 0.0
+            var yOffset: CGFloat = 0.0
+            
+            for line in lines {
+                let ctLine = line as! CTLine
+                var ascent: CGFloat = 0.0
+                var descent: CGFloat = 0.0
+                var leading: CGFloat = 0.0
+                lineWidth = CGFloat(max(CTLineGetTypographicBounds(ctLine, &ascent, &descent, &leading), Double(lineWidth)))
+                yOffset += ascent + descent + leading;
+            }
+            return CGSize(width: lineWidth, height: yOffset)
+        }
+        return .zero
+    }
+    
+    private func sizeForNumberOfLines(lines: Int) -> CGSize {
+        if let string = self.textLayer.string as? NSAttributedString {
+            let typesetter = CTTypesetterCreateWithAttributedString(string as CFAttributedString)
+            let width: CGFloat = self.bounds.size.width
+            var offset: CFIndex = 0
+            var yOffset: CGFloat = 0.0
+            var lineCount = 0
+            
+            repeat {
+                let length = CTTypesetterSuggestLineBreak(typesetter, offset, Double(width))
+                let line = CTTypesetterCreateLine(typesetter, CFRangeMake(offset, length))
+                
+                var ascent: CGFloat = 0.0
+                var descent: CGFloat = 0.0
+                var leading: CGFloat = 0.0
+                CTLineGetTypographicBounds(line, &ascent, &descent, &leading)
+                
+                offset += length;
+                yOffset += ascent + descent + leading;
+                
+                if lines != 0 && lineCount >= lines {
+                    break
+                }
+                
+                lineCount += 1
+            } while (offset < string.length)
+            
+            return CGSize(width: width, height: ceil(yOffset))
+        }
+        
+        return .zero
+    }
+    
+    private func getLines() -> [NSAttributedString] {
+        let size = self.sizeForNumberOfLines(lines: 0)
+        return self.getLinesInFrame(frame: CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: size.height))
+    }
+    
+    private func getLinesInFrame(frame: CGRect) -> [NSAttributedString] {
+        if let string = self.textLayer.string as? NSAttributedString {
+            let path = CGMutablePath()
+            path.addRect(frame)
+            
+            var result = [NSAttributedString]()
+            let frameSetter = CTFramesetterCreateWithAttributedString(string as CFAttributedString)
+            let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, nil)
+            let lines = CTFrameGetLines(frame) as NSArray
+            
+            for line in lines {
+                let lineRange = CTLineGetStringRange(line as! CTLine)
+                let range = NSMakeRange(lineRange.location, lineRange.length)
+                let lineString = string.attributedSubstring(from: range)
+                result.append(lineString)
+            }
+            return result
+        }
+        return []
     }
 }
 
 class ViewController: UIViewController, UINavigationBarDelegate {
     
+    private var foo = Observable<String>("Hello World")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let observer = foo.observe { [weak self] value, _ in
+            print(value)
+        }
+        
+        foo.value = "Brandon"
+        observer.dispose()
+        foo.value = "Meh"
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func createParticles() {
         let particle = UIView()
         particle.frame = CGRect(0, 0, 10, 10)
         particle.backgroundColor = UIColor.random()
@@ -78,14 +199,6 @@ class ViewController: UIViewController, UINavigationBarDelegate {
         emitterLayer.emitterCells = [cell]
         self.view.layer.addSublayer(emitterLayer)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
     
     func createCustomNavigation() {
         let navigationBar = UINavigationBar()
