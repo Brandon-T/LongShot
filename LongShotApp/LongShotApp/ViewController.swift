@@ -159,7 +159,7 @@ class ViewController: UIViewController, UINavigationBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let observer = foo.observe { [weak self] value, _ in
+        let observer = foo.observe { value, _ in
             print(value)
         }
         
