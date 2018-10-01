@@ -120,6 +120,15 @@ public class Certificate {
                 let status = SecTrustEvaluate(serverTrust, &secResult)
                 
                 if status == errSecSuccess, let localKey = self.publicKey {
+//                    for index in 0..<SecTrustGetCertificateCount(serverTrust) {
+//                        if let certificate = SecTrustGetCertificateAtIndex(serverTrust, index) {
+//                            if localKey.equals(SecureKey(certificate: certificate)) {
+//                                challenge.sender?.use(URLCredential(trust:serverTrust), for: challenge)
+////                                challenge.sender?.performDefaultHandling?(for: challenge)
+//                                return true
+//                            }
+//                    }
+                    
                     if compareKeys {
                         if localKey.equals(SecureKey(trust: serverTrust)) {
                             challenge.sender?.use(URLCredential(trust:serverTrust), for: challenge)
