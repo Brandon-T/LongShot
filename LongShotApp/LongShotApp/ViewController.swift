@@ -17,22 +17,22 @@ class ContainerController : UIViewController {
         controller.view.frame = self.view.bounds
         
         if let currentController = self.currentController {
-            currentController.willMove(toParentViewController: nil)
-            self.addChildViewController(controller)
+            currentController.willMove(toParent: nil)
+            self.addChild(controller)
             
             self.transition(from: currentController, to: controller, duration: duration, options: .transitionCrossDissolve, animations: {
                 
             }) { (completedTransition) in
-                currentController.removeFromParentViewController()
-                controller.didMove(toParentViewController: self)
+                currentController.removeFromParent()
+                controller.didMove(toParent: self)
                 currentController.view.removeFromSuperview()
                 self.currentController = controller
             }
         }
         else {
-            self.addChildViewController(controller)
+            self.addChild(controller)
             self.view.addSubview(controller.view)
-            controller.didMove(toParentViewController: self)
+            controller.didMove(toParent: self)
         }
     }
 }

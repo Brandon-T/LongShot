@@ -41,7 +41,7 @@ open class BaseNavigationController : UINavigationController {
             }
             else {
                 let backButton = UIBarButtonItem(title: " ", style: .done, target: nil, action: nil)
-                backButton.imageInsets = UIEdgeInsetsMake(0, 0, 10, 0);
+                backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0);
                 
                 viewController.navigationItem.backBarButtonItem = backButton
             }

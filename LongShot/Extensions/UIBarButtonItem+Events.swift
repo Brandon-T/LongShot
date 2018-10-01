@@ -11,22 +11,22 @@ import UIKit
 
 extension UIBarButtonItem {
     
-    public convenience init(image: UIImage?, style: UIBarButtonItemStyle, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
+    public convenience init(image: UIImage?, style: UIBarButtonItem.Style, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
         self.init(image: image, style: style, target: nil, action: nil)
         self.setEventHandler(action)
     }
     
-    public convenience init(image: UIImage?, landscapeImagePhone: UIImage?, style: UIBarButtonItemStyle, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
+    public convenience init(image: UIImage?, landscapeImagePhone: UIImage?, style: UIBarButtonItem.Style, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
         self.init(image: image, landscapeImagePhone: landscapeImagePhone, style: style, target: nil, action: nil)
         self.setEventHandler(action)
     }
     
-    public convenience init(title: String?, style: UIBarButtonItemStyle, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
+    public convenience init(title: String?, style: UIBarButtonItem.Style, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
         self.init(title: title, style: style, target: nil, action: nil)
         self.setEventHandler(action)
     }
     
-    public convenience init(barButtonSystemItem systemItem: UIBarButtonSystemItem, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
+    public convenience init(barButtonSystemItem systemItem: UIBarButtonItem.SystemItem, _ action: @escaping (_ item: UIBarButtonItem) -> Void) {
         self.init(barButtonSystemItem: systemItem, target: nil, action: nil)
         self.setEventHandler(action)
     }

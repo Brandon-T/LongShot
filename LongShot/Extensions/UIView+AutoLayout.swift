@@ -47,7 +47,7 @@ public extension UIView {
             topAnchor.constraint(equalTo: constrainable.topAnchor, constant: insets.top),
             rightAnchor.constraint(equalTo: constrainable.rightAnchor, constant: -insets.right),
             bottomAnchor.constraint(equalTo: constrainable.bottomAnchor, constant: -insets.bottom)
-            ])
+        ])
         self.translatesAutoresizingMaskIntoConstraints = false
         return self
     }

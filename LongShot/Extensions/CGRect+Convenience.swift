@@ -60,7 +60,7 @@ public extension CGRect {
     }
     
     public mutating func inset(insets: UIEdgeInsets) -> CGRect {
-        self = UIEdgeInsetsInsetRect(self, insets)
+        self = self.inset(by: insets)
         return self
     }
     

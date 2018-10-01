@@ -24,7 +24,7 @@ public extension UICollectionView {
     /// velocity - the velocity of the scrollView in `scrollViewWillEndDragging`
     /// targetContentOffset - the target offset of the scrollView in `scrollViewWillEndDragging`
     public func pageIndexForPaging(_ velocity: CGPoint, targetContentOffset: CGPoint) -> Int? {
-        var direction = UICollectionViewScrollDirection.vertical
+        var direction = UICollectionView.ScrollDirection.vertical
         
         if let scrollDirection = (self.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection {
             direction = scrollDirection
@@ -52,7 +52,7 @@ public extension UICollectionView {
     /// velocity - the velocity of the scrollView in `scrollViewWillEndDragging`
     /// targetContentOffset - the target offset of the scrollView in `scrollViewWillEndDragging`
     public func contentOffsetForPaging(_ velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        var direction = UICollectionViewScrollDirection.vertical
+        var direction = UICollectionView.ScrollDirection.vertical
         
         if let scrollDirection = (self.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection {
             direction = scrollDirection
@@ -87,7 +87,7 @@ public extension UICollectionViewLayout {
         for layoutAttributes : AnyObject in attributesArray {
             if let layoutAttributes = layoutAttributes as? UICollectionViewLayoutAttributes {
                 
-                if layoutAttributes.representedElementCategory != UICollectionElementCategory.cell {
+                if layoutAttributes.representedElementCategory != UICollectionView.ElementCategory.cell {
                     continue
                 }
                 
@@ -121,7 +121,7 @@ public extension UICollectionViewLayout {
             
             if let layoutAttributes = layoutAttributes as? UICollectionViewLayoutAttributes {
                 
-                if layoutAttributes.representedElementCategory != UICollectionElementCategory.cell {
+                if layoutAttributes.representedElementCategory != UICollectionView.ElementCategory.cell {
                     continue
                 }
                 

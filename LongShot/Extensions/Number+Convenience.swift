@@ -32,7 +32,7 @@ public extension Float {
     }
     
     public func equals(other: Float, delta: Float = Float.ulpOfOne) -> Bool {
-        return fabs(self - other) < delta
+        return abs(self - other) < delta
     }
     
     public func asCurrency(locale: Locale = Locale.current) -> String? {
@@ -92,7 +92,7 @@ public extension CGFloat {
     }
     
     public func equals(other: CGFloat, delta: CGFloat = CGFloat.ulpOfOne) -> Bool {
-        return fabs(self - other) < delta
+        return abs(self - other) < delta
     }
     
     public static func random() -> CGFloat {

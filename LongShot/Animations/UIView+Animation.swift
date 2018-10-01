@@ -67,7 +67,7 @@ private class LayerAnimator {
         animation.duration = duration
         animation.beginTime = delay > 0 ? CACurrentMediaTime() + delay : 0.0;
         animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeBoth
+        animation.fillMode = .both
         self.setAnimationOptions(animation, options: options)
         return animation
     }
@@ -83,7 +83,7 @@ private class LayerAnimator {
         animation.stiffness = CGFloat(pow(animation.damping, 2)) / CGFloat(pow(dampingRatio * 2, 2))
         animation.initialVelocity = initialVelocity
         animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeBoth
+        animation.fillMode = .both
         self.setAnimationOptions(animation, options: options)
         return animation
     }
@@ -95,22 +95,22 @@ private class LayerAnimator {
         if (options.rawValue != 0) {
             switch options {
             case .curveEaseInOut:
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
                 
             case .curveEaseIn:
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
                 
             case .curveEaseOut:
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
                 
             case .curveLinear:
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
                 
             case .systemDefault:
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
                 
             default:
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
             }
         }
     }
@@ -227,7 +227,7 @@ class LayerAnimationGroup : LayerPathAnimation {
     func execute() {
         let duration = self.maxDuration()
         self.group?.duration = duration
-        self.group?.fillMode = kCAFillModeBoth
+        self.group?.fillMode = .both
         self.group?.isRemovedOnCompletion = false
         self.finalize(self.group)
     }

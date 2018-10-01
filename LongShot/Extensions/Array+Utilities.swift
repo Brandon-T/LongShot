@@ -95,6 +95,29 @@ public extension Array {
         self.removeAll()
         self.append(contentsOf: x)
     }
+    
+    public func split(chunks: Int) -> [[Element]] {
+        let count = self.count
+        var results = [[Element]]()
+        
+        let length = Int(ceil(Double(count) / Double(chunks)))
+        let remainder = count % chunks
+        
+        var beg = 0
+        var end = length
+        
+        for _ in 0..<(remainder > 0 ? chunks - 1 : chunks) {
+            results.append(Array(self[beg..<end]))
+            beg += length
+            end += length
+        }
+        
+        if remainder > 0 {
+            results.append(Array(self[beg..<count]))
+        }
+        
+        return results
+    }
 }
 
 public extension Array where Element : Equatable {

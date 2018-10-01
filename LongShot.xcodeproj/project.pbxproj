@@ -18,6 +18,11 @@
 		5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F83200EDB04005070BC /* Timer+Events.swift */; };
 		5E5EB7E12001565000C55CE4 /* CALayer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */; };
 		5E5EB7E32001708800C55CE4 /* CGPoint+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB7E22001708800C55CE4 /* CGPoint+Convenience.swift */; };
+		5E7818C32161895C0012357A /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C22161895C0012357A /* TaskQueue.swift */; };
+		5E7818C521619B550012357A /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C421619B550012357A /* Cipher.swift */; };
+		5E7818C72161A1150012357A /* PresentationFrameAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C62161A1150012357A /* PresentationFrameAnimator.swift */; };
+		5E7818C92161A27C0012357A /* UIView+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C82161A27C0012357A /* UIView+Keyboard.swift */; };
+		5E7818CB2161A6400012357A /* Synchronization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818CA2161A6400012357A /* Synchronization.swift */; };
 		5E868A842002A0E60000B38C /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E868A832002A0E50000B38C /* AudioPlayer.swift */; };
 		5E92CB431FFB267A0081A255 /* LongShot.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E92CB411FFB267A0081A255 /* LongShot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E92CB4F1FFB27350081A255 /* CollectionViewPagingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB4E1FFB27350081A255 /* CollectionViewPagingLayout.swift */; };
@@ -69,6 +74,11 @@
 		5E593F83200EDB04005070BC /* Timer+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Events.swift"; sourceTree = "<group>"; };
 		5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Convenience.swift"; sourceTree = "<group>"; };
 		5E5EB7E22001708800C55CE4 /* CGPoint+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Convenience.swift"; sourceTree = "<group>"; };
+		5E7818C22161895C0012357A /* TaskQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
+		5E7818C421619B550012357A /* Cipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
+		5E7818C62161A1150012357A /* PresentationFrameAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFrameAnimator.swift; sourceTree = "<group>"; };
+		5E7818C82161A27C0012357A /* UIView+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Keyboard.swift"; sourceTree = "<group>"; };
+		5E7818CA2161A6400012357A /* Synchronization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronization.swift; sourceTree = "<group>"; };
 		5E868A832002A0E50000B38C /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		5E92CB3E1FFB267A0081A255 /* LongShot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LongShot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E92CB411FFB267A0081A255 /* LongShot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongShot.h; sourceTree = "<group>"; };
@@ -125,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				5E92CB721FFB48AA0081A255 /* OrderedDictionary.swift */,
+				5E7818C22161895C0012357A /* TaskQueue.swift */,
+				5E7818CA2161A6400012357A /* Synchronization.swift */,
 			);
 			path = "Structures & Algorithms";
 			sourceTree = "<group>";
@@ -134,6 +146,7 @@
 			children = (
 				5E3C37E3200059B700B24EA3 /* DisplayLinkAnimator.swift */,
 				5E05830A2002E6C3001CD80F /* UIView+Animation.swift */,
+				5E7818C62161A1150012357A /* PresentationFrameAnimator.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -287,6 +300,7 @@
 				5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */,
 				5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */,
 				5EB36E4B2134DA7B00470253 /* UIStackView+Convenience.swift */,
+				5E7818C82161A27C0012357A /* UIView+Keyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,6 +371,7 @@
 		5E92CB891FFB515A0081A255 /* Security */ = {
 			isa = PBXGroup;
 			children = (
+				5E7818C421619B550012357A /* Cipher.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -421,7 +436,7 @@
 				TargetAttributes = {
 					5E92CB3D1FFB267A0081A255 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -489,12 +504,14 @@
 				5E92CB511FFB32210081A255 /* UIControl+Events.swift in Sources */,
 				5E3C37ED2000662600B24EA3 /* RuntimeError.swift in Sources */,
 				5E92CB841FFB4C9D0081A255 /* Func.swift in Sources */,
+				5E7818CB2161A6400012357A /* Synchronization.swift in Sources */,
 				5E92CB671FFB45E40081A255 /* Sequence+Algorithm.swift in Sources */,
 				5E9436BD1FFDCE700038DE97 /* UIView+Utilities.swift in Sources */,
 				5E92CB751FFB49110081A255 /* TickingLabel.swift in Sources */,
 				5E3C37E920005F4B00B24EA3 /* CameraCaptureDevice.swift in Sources */,
 				5E92CB6D1FFB47230081A255 /* BaseNavigationController.swift in Sources */,
 				5E868A842002A0E60000B38C /* AudioPlayer.swift in Sources */,
+				5E7818C72161A1150012357A /* PresentationFrameAnimator.swift in Sources */,
 				5E5EB7E32001708800C55CE4 /* CGPoint+Convenience.swift in Sources */,
 				5E92CB631FFB3D980081A255 /* UICollectionView+Reusability.swift in Sources */,
 				5E92CB731FFB48AA0081A255 /* OrderedDictionary.swift in Sources */,
@@ -503,14 +520,17 @@
 				5E92CB861FFB4DA20081A255 /* Invocation.swift in Sources */,
 				5E92CB881FFB4E800081A255 /* ProtocolInjection.swift in Sources */,
 				5E3C37E4200059B700B24EA3 /* DisplayLinkAnimator.swift in Sources */,
+				5E7818C92161A27C0012357A /* UIView+Keyboard.swift in Sources */,
 				5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */,
 				5E92CB571FFB36830081A255 /* UIColor+Conversions.swift in Sources */,
 				5E92CB821FFB4C860081A255 /* Function.swift in Sources */,
 				5EB36E4A2134D6E300470253 /* UIBarButtonItem+Events.swift in Sources */,
 				5E5EB7E12001565000C55CE4 /* CALayer+Convenience.swift in Sources */,
 				5E92CB4F1FFB27350081A255 /* CollectionViewPagingLayout.swift in Sources */,
+				5E7818C32161895C0012357A /* TaskQueue.swift in Sources */,
 				5E05830B2002E6C3001CD80F /* UIView+Animation.swift in Sources */,
 				5E92CB701FFB47E40081A255 /* BaseViewController.swift in Sources */,
+				5E7818C521619B550012357A /* Cipher.swift in Sources */,
 				5E4C61F62002D51100602D81 /* UIScrollView+Utilities.swift in Sources */,
 				5E92CB5F1FFB3B4A0081A255 /* NSDate+Convenience.swift in Sources */,
 				5E92CB7C1FFB4BF90081A255 /* Block.swift in Sources */,
@@ -664,7 +684,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -687,7 +707,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -31,8 +31,8 @@ public class DisplayLinkAnimator {
         
         if self.currentTime >= self.totalTime {
             self.displayLink?.invalidate()
-            self.displayLink?.remove(from: .main, forMode: .defaultRunLoopMode)
-            self.displayLink?.remove(from: .main, forMode: .UITrackingRunLoopMode)
+            self.displayLink?.remove(from: .main, forMode: .default)
+            self.displayLink?.remove(from: .main, forMode: .tracking)
             self.displayLink = nil
             self.currentTime = self.totalTime
         }
@@ -59,8 +59,8 @@ public class DisplayLinkAnimator {
     }
     
     public func animateWithDuration(duration: TimeInterval, from: Float, to: Float, update: @escaping (Float) -> Void, completion: (() -> Void)? = nil) {
-        self.displayLink?.remove(from: .main, forMode: .defaultRunLoopMode)
-        self.displayLink?.remove(from: .main, forMode: .UITrackingRunLoopMode)
+        self.displayLink?.remove(from: .main, forMode: .default)
+        self.displayLink?.remove(from: .main, forMode: .tracking)
         self.displayLink?.invalidate()
         self.displayLink = nil
         
@@ -83,13 +83,13 @@ public class DisplayLinkAnimator {
         
         self.displayLink = CADisplayLink(target: self, selector: #selector(onTick(displayLink:)))
         self.displayLink?.preferredFramesPerSecond = 60
-        self.displayLink?.add(to: .main, forMode: .defaultRunLoopMode)
-        self.displayLink?.add(to: .main, forMode: .UITrackingRunLoopMode)
+        self.displayLink?.add(to: .main, forMode: .default)
+        self.displayLink?.add(to: .main, forMode: .tracking)
     }
     
     public func stopAnimating() {
-        self.displayLink?.remove(from: .main, forMode: .defaultRunLoopMode)
-        self.displayLink?.remove(from: .main, forMode: .UITrackingRunLoopMode)
+        self.displayLink?.remove(from: .main, forMode: .default)
+        self.displayLink?.remove(from: .main, forMode: .tracking)
         self.displayLink?.invalidate()
         self.displayLink = nil
         self.frameUpdate = nil

@@ -26,14 +26,36 @@ public extension Sequence {
     
     public func orderedGroup<GroupingType: Hashable>(by key: (Iterator.Element) -> GroupingType) -> [[Iterator.Element]] {
         var groups: [GroupingType: [Iterator.Element]] = [:]
-        var groupsOrder: [GroupingType] = []
         forEach { element in
             let key = key(element)
             if case nil = groups[key]?.append(element) {
                 groups[key] = [element]
-                groupsOrder.append(key)
             }
         }
-        return groupsOrder.map { groups[$0]! }
+        return groups.compactMap { $0.value }
+    }
+}
+
+public extension Optional where Wrapped == String {
+    
+    public var isEmpty: Bool {
+        switch self {
+        case .none:
+            return true
+        case .some(let string):
+            return string.isEmpty
+        }
+    }
+}
+
+public extension Optional where Wrapped == Array<Any> {
+    
+    public var isEmpty: Bool {
+        switch self {
+        case .none:
+            return true
+        case .some(let array):
+            return array.isEmpty
+        }
     }
 }

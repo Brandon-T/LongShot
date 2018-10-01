@@ -22,14 +22,12 @@ internal final class EventTarget<T> : RemovableTarget where T : NSObject {
         self.object = object
         self.runnable = runnable
         self.retain()
-        self.addListener?()
     }
     
     private init(_ initializer: (EventTarget, Selector) -> T, runnable: @escaping (T) -> Void) {
         self.object = initializer(self, #selector(EventTarget.run(_:)))
         self.runnable = runnable
         self.retain()
-        self.addListener?()
     }
     
     @objc
@@ -53,63 +51,62 @@ internal final class EventTarget<T> : RemovableTarget where T : NSObject {
 
 
 internal extension EventTarget where T : UIControl {
-    convenience init(_ object: T, event: UIControlEvents, runnable: @escaping (T) -> Void) {
-        self.init(object, runnable: runnable)
+    convenience init(_ object: T, event: UIControl.Event, runnable: @escaping (T) -> Void) {
+        self.init({ (target, selector) -> T in
+            object.addTarget(target, action: selector, for: event)
+            return object
+        }, runnable: runnable)
         
-        self.addListener = { [weak self]() in
-            if let strongSelf = self {
-                strongSelf.object?.addTarget(strongSelf, action: #selector(EventTarget.run(_:)), for: event)
-            }
+        self.addListener = { [weak self] in
+            guard let self = self else { return }
+            self.object?.addTarget(self, action: #selector(EventTarget.run(_:)), for: event)
         }
         
-        self.removeListener = { [weak self]() in
-            if let strongSelf = self {
-                strongSelf.object?.removeTarget(strongSelf, action: #selector(EventTarget.run(_:)), for: event)
-            }
+        self.removeListener = { [weak self] in
+            guard let self = self else { return }
+            self.object?.removeTarget(self, action: #selector(EventTarget.run(_:)), for: event)
         }
-        self.addListener?()
     }
 }
 
 internal extension EventTarget where T : UIGestureRecognizer {
     convenience init(_ object: T, runnable: @escaping (T) -> Void) {
-        self.init(object, runnable: runnable)
+        self.init({ (target, selector) -> T in
+            object.addTarget(target, action: selector)
+            return object
+        }, runnable: runnable)
 
-        self.addListener = { [weak self]() in
-            if let strongSelf = self {
-                strongSelf.object?.addTarget(strongSelf, action: #selector(EventTarget.run(_:)))
-            }
+        self.addListener = { [weak self] in
+            guard let self = self else { return }
+            self.object?.addTarget(self, action: #selector(EventTarget.run(_:)))
         }
 
         self.removeListener = { [weak self]() in
-            if let strongSelf = self {
-                strongSelf.object?.removeTarget(strongSelf, action: #selector(EventTarget.run(_:)))
-            }
+            guard let self = self else { return }
+            self.object?.removeTarget(self, action: #selector(EventTarget.run(_:)))
         }
-        
-        self.addListener?()
     }
 }
 
 internal extension EventTarget where T : UIBarButtonItem {
     convenience init(_ object: T, runnable: @escaping (T) -> Void) {
-        self.init(object, runnable: runnable)
+        self.init({ (target, selector) -> T in
+            object.target = target
+            object.action = selector
+            return object
+        }, runnable: runnable)
         
-        self.addListener = { [weak self]() in
-            if let strongSelf = self {
-                strongSelf.object?.target = strongSelf
-                strongSelf.object?.action = #selector(EventTarget.run(_:))
-            }
+        self.addListener = { [weak self] in
+            guard let self = self else { return }
+            self.object?.target = self
+            self.object?.action = #selector(EventTarget.run(_:))
         }
         
-        self.removeListener = { [weak self]() in
-            if let strongSelf = self {
-                strongSelf.object?.target = nil
-                strongSelf.object?.action = nil
-            }
+        self.removeListener = { [weak self] in
+            guard let self = self else { return }
+            self.object?.target = nil
+            self.object?.action = nil
         }
-        
-        self.addListener?()
     }
 }
 

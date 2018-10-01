@@ -32,7 +32,7 @@ public extension NSObject {
         }
         
         let memory: NSObject = (cls as! Allocatable.Type).alloc()
-        return memory.performSelector(selector, withArgs: args).takeUnretainedValue() as! NSObject
+        return memory.performSelector(selector, withArgs: args).takeUnretainedValue() as? NSObject
     }
     
     public func performSelector(_ selector: Selector, withArgs args: [AnyObject]) -> Unmanaged<AnyObject>! {

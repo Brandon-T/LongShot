@@ -75,3 +75,28 @@ public extension UIColor {
         return "#\(String(self.toHex(), radix: 16, uppercase: true))"
     }
 }
+
+public extension UIColor {
+    public func blend(with color: UIColor, intensity: CGFloat = 0.5, otherIntensity: CGFloat = 0.5) -> UIColor {
+        let total = intensity + otherIntensity
+        let lerp1 = intensity / total
+        let lerp2 = otherIntensity / total
+        
+        guard lerp1 > 0 else {
+            return color
+        }
+        
+        guard lerp2 > 0 else {
+            return self
+        }
+        
+        let c1 = self.componentsF()
+        let c2 = color.componentsF()
+        
+        //Multiply the two colors with the lerp
+        return UIColor(red: lerp1 * c1.red + lerp2 * c2.red,
+                       green: lerp1 * c1.green + lerp2 * c2.green,
+                       blue: lerp1 * c1.blue + lerp2 * c2.blue,
+                       alpha: lerp1 * c1.alpha + lerp2 * c2.alpha)
+    }
+}

@@ -29,7 +29,7 @@ public extension UICollectionView {
     
     public func dequeueReusableView<T: UIView>(for indexPath: IndexPath, kind: UICollectionElementKind) -> T {
         let identifier = String(describing: T.self)
-        if let view = self.dequeueReusableSupplementaryView(ofKind: kind == .header ? UICollectionElementKindSectionHeader : UICollectionElementKindSectionFooter, withReuseIdentifier: identifier, for: indexPath) as? T {
+        if let view = self.dequeueReusableSupplementaryView(ofKind: kind == .header ? UICollectionView.elementKindSectionHeader : UICollectionView.elementKindSectionFooter, withReuseIdentifier: identifier, for: indexPath) as? T {
             return view
         }
         fatalError("Cannot Dequeue View With Identifier \(identifier)")
@@ -42,7 +42,7 @@ public extension UICollectionView {
     
     public func register<T: UIView>(view _: T.Type, kind: UICollectionElementKind) {
         let identifier = String(describing: T.self)
-        self.register(T.self, forSupplementaryViewOfKind: kind == .header ? UICollectionElementKindSectionHeader : UICollectionElementKindSectionFooter, withReuseIdentifier: identifier)
+        self.register(T.self, forSupplementaryViewOfKind: kind == .header ? UICollectionView.elementKindSectionHeader : UICollectionView.elementKindSectionFooter, withReuseIdentifier: identifier)
     }
 }
 

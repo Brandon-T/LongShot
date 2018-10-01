@@ -47,7 +47,7 @@ public extension UITableViewCell {
     }
     
     public func removeSeparator() {
-        self.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, UIScreen.main.bounds.width * 2.0)
+        self.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: UIScreen.main.bounds.width * 2.0)
     }
 }
 
@@ -89,7 +89,7 @@ public final class GenericTableSupplementaryView<ContentView> : UITableViewHeade
         }
     }
     
-    open override var layoutMargins: UIEdgeInsets {
+    override public var layoutMargins: UIEdgeInsets {
         get {
             return .zero
         }
@@ -103,7 +103,7 @@ public final class GenericTableSupplementaryView<ContentView> : UITableViewHeade
 public final class GenericTableCell<ContentView> : UITableViewCell where ContentView : UIView {
     public let view = ContentView()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.doLayout()
     }
@@ -139,7 +139,7 @@ public final class GenericTableCell<ContentView> : UITableViewCell where Content
         }
     }
     
-    open override var layoutMargins: UIEdgeInsets {
+    public override var layoutMargins: UIEdgeInsets {
         get {
             return .zero
         }
