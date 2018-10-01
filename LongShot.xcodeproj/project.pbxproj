@@ -23,6 +23,7 @@
 		5E7818C72161A1150012357A /* PresentationFrameAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C62161A1150012357A /* PresentationFrameAnimator.swift */; };
 		5E7818C92161A27C0012357A /* UIView+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C82161A27C0012357A /* UIView+Keyboard.swift */; };
 		5E7818CB2161A6400012357A /* Synchronization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818CA2161A6400012357A /* Synchronization.swift */; };
+		5E7818CD2161B0990012357A /* CertificatePinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818CC2161B0990012357A /* CertificatePinning.swift */; };
 		5E868A842002A0E60000B38C /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E868A832002A0E50000B38C /* AudioPlayer.swift */; };
 		5E92CB431FFB267A0081A255 /* LongShot.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E92CB411FFB267A0081A255 /* LongShot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E92CB4F1FFB27350081A255 /* CollectionViewPagingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB4E1FFB27350081A255 /* CollectionViewPagingLayout.swift */; };
@@ -79,6 +80,7 @@
 		5E7818C62161A1150012357A /* PresentationFrameAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFrameAnimator.swift; sourceTree = "<group>"; };
 		5E7818C82161A27C0012357A /* UIView+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Keyboard.swift"; sourceTree = "<group>"; };
 		5E7818CA2161A6400012357A /* Synchronization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronization.swift; sourceTree = "<group>"; };
+		5E7818CC2161B0990012357A /* CertificatePinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePinning.swift; sourceTree = "<group>"; };
 		5E868A832002A0E50000B38C /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		5E92CB3E1FFB267A0081A255 /* LongShot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LongShot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E92CB411FFB267A0081A255 /* LongShot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongShot.h; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				5E7818C421619B550012357A /* Cipher.swift */,
+				5E7818CC2161B0990012357A /* CertificatePinning.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				5E92CB6D1FFB47230081A255 /* BaseNavigationController.swift in Sources */,
 				5E868A842002A0E60000B38C /* AudioPlayer.swift in Sources */,
 				5E7818C72161A1150012357A /* PresentationFrameAnimator.swift in Sources */,
+				5E7818CD2161B0990012357A /* CertificatePinning.swift in Sources */,
 				5E5EB7E32001708800C55CE4 /* CGPoint+Convenience.swift in Sources */,
 				5E92CB631FFB3D980081A255 /* UICollectionView+Reusability.swift in Sources */,
 				5E92CB731FFB48AA0081A255 /* OrderedDictionary.swift in Sources */,
