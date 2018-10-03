@@ -13,6 +13,7 @@
 		5E3C37ED2000662600B24EA3 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37EC2000662600B24EA3 /* RuntimeError.swift */; };
 		5E3C37EF20006F6100B24EA3 /* UIGestureRecognizer+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */; };
 		5E4C61F62002D51100602D81 /* UIScrollView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C61F52002D51100602D81 /* UIScrollView+Utilities.swift */; };
+		5E5128872164560000E682F9 /* Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5128862164560000E682F9 /* Cryptography.swift */; };
 		5E55D03C20B232670036A96C /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55D03B20B232670036A96C /* Observer.swift */; };
 		5E593F81200E3221005070BC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F80200E3221005070BC /* ImageCache.swift */; };
 		5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F83200EDB04005070BC /* Timer+Events.swift */; };
@@ -70,6 +71,7 @@
 		5E3C37EC2000662600B24EA3 /* RuntimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		5E3C37EE20006F6100B24EA3 /* UIGestureRecognizer+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Event.swift"; sourceTree = "<group>"; };
 		5E4C61F52002D51100602D81 /* UIScrollView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utilities.swift"; sourceTree = "<group>"; };
+		5E5128862164560000E682F9 /* Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptography.swift; sourceTree = "<group>"; };
 		5E55D03B20B232670036A96C /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		5E593F80200E3221005070BC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		5E593F83200EDB04005070BC /* Timer+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Events.swift"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			children = (
 				5E7818C421619B550012357A /* Cipher.swift */,
 				5E7818CC2161B0990012357A /* CertificatePinning.swift */,
+				5E5128862164560000E682F9 /* Cryptography.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				5EF197892001C7D100061671 /* Target+Events.swift in Sources */,
 				5E3C37EF20006F6100B24EA3 /* UIGestureRecognizer+Event.swift in Sources */,
 				5EB36E4C2134DA7B00470253 /* UIStackView+Convenience.swift in Sources */,
+				5E5128872164560000E682F9 /* Cryptography.swift in Sources */,
 				5ECD021E2000864500E9817D /* UIApplication+Convenience.swift in Sources */,
 				5E593F81200E3221005070BC /* ImageCache.swift in Sources */,
 			);

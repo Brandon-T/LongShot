@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LongShot
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Cryptography.deleteKey(id: "com.xio.test")
+        
+        let key = try? Cryptography.getKey(id: "com.xio.test")
+        if key == nil {
+            print("KEY DOES NOT EXIST")
+        }
+        
+        print(key)
+        
+        let newKey = Cryptography.generateKey(id: "com.xio.test", type: .rsa, bits: 2048, storeInKeychain: true)
+        print(newKey)
+        
+        Cryptography.deleteKey(id: "com.xio.test")
+        
         return true
     }
 
