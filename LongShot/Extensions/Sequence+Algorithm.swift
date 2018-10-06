@@ -48,14 +48,14 @@ public extension Optional where Wrapped == String {
     }
 }
 
-public extension Optional where Wrapped == Array<Any> {
+public extension Optional where Wrapped == Collection {
     
     public var isEmpty: Bool {
         switch self {
         case .none:
             return true
-        case .some(let array):
-            return array.isEmpty
+        case .some(let collection):
+            return collection.isEmpty
         }
     }
 }
