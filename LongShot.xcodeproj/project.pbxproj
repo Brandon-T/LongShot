@@ -26,6 +26,8 @@
 		5E7818CB2161A6400012357A /* Synchronization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818CA2161A6400012357A /* Synchronization.swift */; };
 		5E7818CD2161B0990012357A /* CertificatePinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818CC2161B0990012357A /* CertificatePinning.swift */; };
 		5E868A842002A0E60000B38C /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E868A832002A0E50000B38C /* AudioPlayer.swift */; };
+		5E890A21216EEE4300D7A53A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E890A20216EEE4300D7A53A /* Preferences.swift */; };
+		5E890A23216EFDD200D7A53A /* KeyPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E890A22216EFDD200D7A53A /* KeyPaths.swift */; };
 		5E92CB431FFB267A0081A255 /* LongShot.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E92CB411FFB267A0081A255 /* LongShot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E92CB4F1FFB27350081A255 /* CollectionViewPagingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB4E1FFB27350081A255 /* CollectionViewPagingLayout.swift */; };
 		5E92CB511FFB32210081A255 /* UIControl+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92CB501FFB32210081A255 /* UIControl+Events.swift */; };
@@ -84,6 +86,8 @@
 		5E7818CA2161A6400012357A /* Synchronization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronization.swift; sourceTree = "<group>"; };
 		5E7818CC2161B0990012357A /* CertificatePinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePinning.swift; sourceTree = "<group>"; };
 		5E868A832002A0E50000B38C /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		5E890A20216EEE4300D7A53A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		5E890A22216EFDD200D7A53A /* KeyPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPaths.swift; sourceTree = "<group>"; };
 		5E92CB3E1FFB267A0081A255 /* LongShot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LongShot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E92CB411FFB267A0081A255 /* LongShot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongShot.h; sourceTree = "<group>"; };
 		5E92CB421FFB267A0081A255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,9 +142,11 @@
 		5E3C37E12000594100B24EA3 /* Structures & Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				5E890A22216EFDD200D7A53A /* KeyPaths.swift */,
 				5E92CB721FFB48AA0081A255 /* OrderedDictionary.swift */,
 				5E7818C22161895C0012357A /* TaskQueue.swift */,
 				5E7818CA2161A6400012357A /* Synchronization.swift */,
+				5E890A20216EEE4300D7A53A /* Preferences.swift */,
 			);
 			path = "Structures & Algorithms";
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 				5E92CB611FFB3D770081A255 /* UITableView+Reusability.swift in Sources */,
 				5E92CB5B1FFB380B0081A255 /* Number+Convenience.swift in Sources */,
 				5E92CB7E1FFB4C4C0081A255 /* Invocable.swift in Sources */,
+				5E890A21216EEE4300D7A53A /* Preferences.swift in Sources */,
 				5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */,
 				5E92CB5D1FFB3B120081A255 /* String+Convenience.swift in Sources */,
 				5E92CB801FFB4C690081A255 /* Runtime.swift in Sources */,
@@ -545,6 +552,7 @@
 				5E92CB651FFB42480081A255 /* CGRect+Convenience.swift in Sources */,
 				5E92CB791FFB4AE80081A255 /* PDFReader.swift in Sources */,
 				5EF197892001C7D100061671 /* Target+Events.swift in Sources */,
+				5E890A23216EFDD200D7A53A /* KeyPaths.swift in Sources */,
 				5E3C37EF20006F6100B24EA3 /* UIGestureRecognizer+Event.swift in Sources */,
 				5EB36E4C2134DA7B00470253 /* UIStackView+Convenience.swift in Sources */,
 				5E5128872164560000E682F9 /* Cryptography.swift in Sources */,

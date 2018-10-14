@@ -94,3 +94,17 @@ public extension NSAttributedString {
         return CGSize(width: ceil(size.width), height: ceil(size.height))
     }
 }
+
+extension URL: ExpressibleByStringLiteral {
+    public init(stringLiteral value: StaticString) {
+        self = URL(string: "\(value)").unsafelyUnwrapped
+    }
+    
+    public init(extendedGraphemeClusterLiteral value: StaticString) {
+        self.init(stringLiteral: value)
+    }
+    
+    public init(unicodeScalarLiteral value: StaticString) {
+        self.init(stringLiteral: value)
+    }
+}
