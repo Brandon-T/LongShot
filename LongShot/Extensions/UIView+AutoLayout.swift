@@ -282,7 +282,7 @@ extension ConstraintAnchor {
             fatalError("Invalid Constraint")
         }
         
-        return ConstraintAnchor(anchor: anchor.anchor)
+        return ConstraintAnchor(anchor: .greaterThan(anchor.anchor))
     }
     
     /// Pins less than some other constraint
@@ -299,7 +299,7 @@ extension ConstraintAnchor {
             fatalError("Invalid Constraint")
         }
         
-        return ConstraintAnchor(anchor: anchor.anchor)
+        return ConstraintAnchor(anchor: .lessThan(anchor.anchor))
     }
 }
 
