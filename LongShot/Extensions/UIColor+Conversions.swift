@@ -10,22 +10,22 @@ import Foundation
 import UIKit
 
 public extension UIColor {
-    public convenience init(hex: String, alpha: CGFloat = 1.0) {
+    convenience init(hex: String, alpha: CGFloat = 1.0) {
         self.init(hex: UInt32(hex, radix: 16) ?? 0x000000, alpha: alpha)
     }
     
-    public convenience init(hex: UInt32, alpha: CGFloat = 1.0) {
+    convenience init(hex: UInt32, alpha: CGFloat = 1.0) {
         let r = UInt8((hex & 0xFF0000) >> 16)
         let g = UInt8((hex & 0xFF00) >> 8)
         let b = UInt8(hex & 0xFF)
         self.init(red8: r, green8: g, blue8: b, alpha: alpha)
     }
     
-    public convenience init(red8: UInt8, green8: UInt8, blue8: UInt8, alpha: CGFloat = 1.0) {
+    convenience init(red8: UInt8, green8: UInt8, blue8: UInt8, alpha: CGFloat = 1.0) {
         self.init(red: CGFloat(red8) / 255.0, green: CGFloat(green8) / 255.0, blue: CGFloat(blue8) / 255.0, alpha: alpha)
     }
     
-    public func componentsF() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    func componentsF() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var (r, g, b, a) = (CGFloat(0.0),
                             CGFloat(0.0),
                             CGFloat(0.0),
@@ -37,7 +37,7 @@ public extension UIColor {
         return (0.0, 0.0, 0.0, 0.0)
     }
     
-    public func componentsB() -> (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8) {
+    func componentsB() -> (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8) {
         var (r, g, b, a) = (CGFloat(0.0),
                             CGFloat(0.0),
                             CGFloat(0.0),
@@ -49,7 +49,7 @@ public extension UIColor {
         return (0, 0, 0, 0)
     }
     
-    public func toHex() -> UInt32 {
+    func toHex() -> UInt32 {
         let (r, g, b, a) = self.componentsB()
         if a > 0 {
             if a < 1 {
@@ -67,17 +67,17 @@ public extension UIColor {
         return 0
     }
     
-    public class func random() -> UIColor {
+    class func random() -> UIColor {
         return UIColor(hex: UInt32(Int.random(min: 0, max: 0xFFFFFF)))
     }
     
-    public func toString() -> String {
+    func toString() -> String {
         return "#\(String(self.toHex(), radix: 16, uppercase: true))"
     }
 }
 
 public extension UIColor {
-    public func blend(with color: UIColor, intensity: CGFloat = 0.5, otherIntensity: CGFloat = 0.5) -> UIColor {
+    func blend(with color: UIColor, intensity: CGFloat = 0.5, otherIntensity: CGFloat = 0.5) -> UIColor {
         let total = intensity + otherIntensity
         let lerp1 = intensity / total
         let lerp2 = otherIntensity / total

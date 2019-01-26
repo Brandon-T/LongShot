@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Array {
-    public func contains<T: Equatable>(_ element: T) -> Bool {
+    func contains<T: Equatable>(_ element: T) -> Bool {
         return self.contains(where: { (e) -> Bool in
             if let e = e as? T {
                 return e == element
@@ -18,7 +18,7 @@ public extension Array {
         })
     }
     
-    public func contains<T: AnyObject>(_ element: T) -> Bool {
+    func contains<T: AnyObject>(_ element: T) -> Bool {
         return self.contains(where: { (e) -> Bool in
             if let e = e as? T {
                 return e === element
@@ -27,8 +27,8 @@ public extension Array {
         })
     }
     
-    public func index<T: Equatable>(of: T) -> Int? {
-        return self.index(where: { (e) -> Bool in
+    func index<T: Equatable>(of: T) -> Int? {
+        return self.firstIndex(where: { (e) -> Bool in
             if let e = e as? T {
                 return e == of
             }
@@ -36,8 +36,8 @@ public extension Array {
         })
     }
     
-    public func index<T: AnyObject>(of: T) -> Int? {
-        return self.index(where: { (e) -> Bool in
+    func index<T: AnyObject>(of: T) -> Int? {
+        return self.firstIndex(where: { (e) -> Bool in
             if let e = e as? T {
                 return e === of
             }
@@ -45,19 +45,19 @@ public extension Array {
         })
     }
     
-    public mutating func remove<T: Equatable>(_ element: T) {
+    mutating func remove<T: Equatable>(_ element: T) {
         if let index = self.index(of: element) {
             self.remove(at: index)
         }
     }
     
-    public mutating func remove<T: AnyObject>(_ element: T) {
+    mutating func remove<T: AnyObject>(_ element: T) {
         if let index = self.index(of: element) {
             self.remove(at: index)
         }
     }
     
-    public mutating func removeAll<T: Equatable>(_ element: T) {
+    mutating func removeAll<T: Equatable>(_ element: T) {
         var indexes = [Int]()
         for (index, value) in self.enumerated() {
             if let value = value as? T {
@@ -74,7 +74,7 @@ public extension Array {
         }
     }
     
-    public mutating func removeAll<T: AnyObject>(_ element: T) {
+    mutating func removeAll<T: AnyObject>(_ element: T) {
         var indexes = [Int]()
         for (index, value) in self.enumerated() {
             if let value = value as? T {
@@ -91,12 +91,12 @@ public extension Array {
         }
     }
     
-    public mutating func swap(x:[Element]) {
+    mutating func swap(x:[Element]) {
         self.removeAll()
         self.append(contentsOf: x)
     }
     
-    public func split(chunks: Int) -> [[Element]] {
+    func split(chunks: Int) -> [[Element]] {
         let count = self.count
         var results = [[Element]]()
         
@@ -121,19 +121,19 @@ public extension Array {
 }
 
 public extension Array where Element : Equatable {
-    public func unique() -> Array {
+    func unique() -> Array {
         return self.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
     }
 }
 
 public extension Array where Element : AnyObject {
-    public func unique() -> Array {
+    func unique() -> Array {
         return self.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
     }
 }
 
 public extension Array where Element : Hashable {
-    public func unique() -> Array {
+    func unique() -> Array {
         return self.reduce([], { $0.contains($1) ? $0 : $0 + [$1] })
     }
 }

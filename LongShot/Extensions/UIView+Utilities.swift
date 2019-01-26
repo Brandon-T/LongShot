@@ -19,7 +19,7 @@ public extension UIView {
         }
     }
     
-    public func getAllSubviews<T: UIView>() -> [T] {
+    func getAllSubviews<T: UIView>() -> [T] {
         return self.subviews.flatMap { subview -> [T] in
             var result = subview.getAllSubviews() as [T]
             if let view = subview as? T {
@@ -29,7 +29,7 @@ public extension UIView {
         }
     }
 
-    public func subviews(where: (_ view: UIView) -> Bool) -> [UIView] {
+    func subviews(where: (_ view: UIView) -> Bool) -> [UIView] {
         return self.subviews.flatMap { subview -> [UIView] in
             var result = subview.subviews(where: `where`)
             if `where`(subview) {
@@ -39,7 +39,7 @@ public extension UIView {
         }
     }
     
-    public func clone() throws -> Self {
+    func clone() throws -> Self {
         return try self.cloneByArchiving()
     }
     

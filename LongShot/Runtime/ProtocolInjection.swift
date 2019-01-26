@@ -9,7 +9,7 @@
 import Foundation
 
 public extension NSObject {
-    public class func classFromString(_ cls: String, interface: Protocol?) -> NSObject.Type? {
+    class func classFromString(_ cls: String, interface: Protocol?) -> NSObject.Type? {
         guard let interface = interface else {
             return NSClassFromString(cls) as? NSObject.Type
         }
@@ -26,11 +26,11 @@ public extension NSObject {
         return nil
     }
 
-    public class func classFromString<T>(_ cls: String, interface: Protocol?) -> T? {
+    class func classFromString<T>(_ cls: String, interface: Protocol?) -> T? {
         return classFromString(cls, interface: interface) as? T
     }
 
-    public class func instanceFromString<T>(_ cls: String, interface: Protocol?) -> T? {
+    class func instanceFromString<T>(_ cls: String, interface: Protocol?) -> T? {
         return classFromString(cls, interface: interface)?.init() as? T
     }
 }

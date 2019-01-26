@@ -28,11 +28,11 @@ public extension NSObject {
         static var associatedKey: Int = 0
     }
     
-    public func memoryAddress() -> Int {
+    func memoryAddress() -> Int {
         return Unmanaged.passUnretained(self).toOpaque().hashValue
     }
     
-    public func getObject<T>() -> T? {
+    func getObject<T>() -> T? {
         if let object = objc_getAssociatedObject(self, &Association.associatedKey) as? T {
             return object
         }
@@ -44,16 +44,16 @@ public extension NSObject {
         }
     }
     
-    public func setObject<T>(object: T, policy: objc_AssociationPolicy) -> Void {
+    func setObject<T>(object: T, policy: objc_AssociationPolicy) -> Void {
         objc_setAssociatedObject(self, &Association.associatedKey, object,  policy)
     }
     
-    public func removeObject() -> Void {
+    func removeObject() -> Void {
         objc_setAssociatedObject(self, &Association.associatedKey, nil, .OBJC_ASSOCIATION_ASSIGN)
     }
     
     
-    public func getObject<T>(key: String) -> T? {
+    func getObject<T>(key: String) -> T? {
         let data: [String: AnyObject]? = self.getObject()
         
         guard let object = data?[key] as? WeakWrapper<AnyObject> else {
@@ -75,13 +75,13 @@ public extension NSObject {
         return nil
     }
     
-    public func setObject<T>(object: T, key: String, policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) -> Void {
+    func setObject<T>(object: T, key: String, policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) -> Void {
         var data: [String: AnyObject] = self.getObject() ?? [String: AnyObject]()
         data[key] = object as AnyObject
         self.setObject(object: data, policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
-    public func removeObject(key: String) -> Void {
+    func removeObject(key: String) -> Void {
         var data: [String: AnyObject] = self.getObject() ?? [String: AnyObject]()
         data.removeValue(forKey: key)
         self.setObject(object: data, policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

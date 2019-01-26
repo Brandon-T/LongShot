@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 public extension CGRect {
-    public func center() -> CGPoint {
+    func center() -> CGPoint {
         return CGPoint(x: self.origin.x + (self.width / 2.0), y: self.origin.y + (self.height / 2.0))
     }
     
-    public func centered(in rect: CGRect) -> CGRect {
+    func centered(in rect: CGRect) -> CGRect {
         return CGRect(x: rect.origin.x + ((rect.width - self.width) / 2.0),
                       y: rect.origin.y + ((rect.height - self.height) / 2.0),
                       width: self.width,
@@ -29,12 +29,12 @@ public extension CGRect {
         self.size = CGSize(width: width, height: height)
     }
     
-    public var x: CGFloat {
+    var x: CGFloat {
         get { return self.origin.x }
         set { self.origin.x = newValue }
     }
     
-    public var y: CGFloat {
+    var y: CGFloat {
         get { return self.origin.y }
         set { self.origin.y = newValue }
     }
@@ -49,57 +49,57 @@ public extension CGRect {
 //        set { self.size.height = newValue }
 //    }
     
-    public mutating func offset(dx: CGFloat, dy: CGFloat) -> CGRect {
+    mutating func offset(dx: CGFloat, dy: CGFloat) -> CGRect {
         self = self.offsetBy(dx: dx, dy: dy)
         return self
     }
     
-    public mutating func inset(dx: CGFloat, dy: CGFloat) -> CGRect {
+    mutating func inset(dx: CGFloat, dy: CGFloat) -> CGRect {
         self = self.insetBy(dx: dx, dy: dy)
         return self
     }
     
-    public mutating func inset(insets: UIEdgeInsets) -> CGRect {
+    mutating func inset(insets: UIEdgeInsets) -> CGRect {
         self = self.inset(by: insets)
         return self
     }
     
-    public mutating func scale(dx: CGFloat, dy: CGFloat) -> CGRect {
+    mutating func scale(dx: CGFloat, dy: CGFloat) -> CGRect {
         self.size = CGSize(width: self.size.width * dx, height: self.size.height * dy)
         return self
     }
     
-    public mutating func extend(dx: CGFloat, dy: CGFloat) -> CGRect {
+    mutating func extend(dx: CGFloat, dy: CGFloat) -> CGRect {
         self.size = CGSize(width: self.size.width + dx, height: self.size.height + dy)
         return self
     }
     
-    public mutating func set(x: CGFloat) -> CGRect {
+    mutating func set(x: CGFloat) -> CGRect {
         self.origin.x = x
         return self
     }
     
-    public mutating func set(y: CGFloat) -> CGRect {
+    mutating func set(y: CGFloat) -> CGRect {
         self.origin.y = y
         return self
     }
     
-    public mutating func set(width: CGFloat) -> CGRect {
+    mutating func set(width: CGFloat) -> CGRect {
         self.size.width = width
         return self
     }
     
-    public mutating func set(height: CGFloat) -> CGRect {
+    mutating func set(height: CGFloat) -> CGRect {
         self.size.height = height
         return self
     }
     
-    public mutating func set(origin: CGPoint) -> CGRect {
+    mutating func set(origin: CGPoint) -> CGRect {
         self.origin = origin
         return self
     }
     
-    public mutating func set(size: CGSize) -> CGRect {
+    mutating func set(size: CGSize) -> CGRect {
         self.size = size
         return self
     }

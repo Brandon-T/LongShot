@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIControl {
     @discardableResult
-    public func addEventHandler<T>(_ event: UIControl.Event, runnable: @escaping (_ control: T) -> Void) -> RemovableTarget where T: UIControl {
+    func on<T>(_ event: UIControl.Event, runnable: @escaping (_ control: T) -> Void) -> RemovableTarget where T: UIControl {
         return EventTarget(self, event: event) { (control) in
             runnable(control as! T)
         }

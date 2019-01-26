@@ -8,10 +8,12 @@
 
 import Foundation
 
+#if compiler(<5)
 @objc
 protocol Allocatable {
     static func alloc() -> NSObject
 }
+#endif
 
 @objc
 protocol Invocation {
@@ -26,6 +28,7 @@ protocol Invocation {
 }
 
 public extension NSObject {
+    #if compiler(<5)
     public class func instantiate(_ cls: NSObject.Type, selector: Selector, args: AnyObject...) -> NSObject! {
         if !class_conformsToProtocol(NSObject.self, Allocatable.self) {
             class_addProtocol(NSObject.self, Allocatable.self)
@@ -34,8 +37,14 @@ public extension NSObject {
         let memory: NSObject = (cls as! Allocatable.Type).alloc()
         return memory.performSelector(selector, withArgs: args).takeUnretainedValue() as? NSObject
     }
+    #else
+    class func instantiate(_ cls: NSObject.Type, selector: Selector, args: AnyObject...) -> NSObject! {
+        let memory: NSObject = cls.perform(Selector("alloc"))!.takeUnretainedValue() as! NSObject
+        return memory.performSelector(selector, withArgs: args).takeUnretainedValue() as? NSObject
+    }
+    #endif
     
-    public func performSelector(_ selector: Selector, withArgs args: [AnyObject]) -> Unmanaged<AnyObject>! {
+    func performSelector(_ selector: Selector, withArgs args: [AnyObject]) -> Unmanaged<AnyObject>! {
         if !class_conformsToProtocol(NSObject.self, Invocation.self) {
             class_addProtocol(NSObject.self, Invocation.self)
         }
@@ -64,7 +73,7 @@ public extension NSObject {
         return nil
     }
     
-    public func performSelector(selector: Selector, withArgs args: AnyObject...) -> Unmanaged<AnyObject>! {
+    func performSelector(selector: Selector, withArgs args: AnyObject...) -> Unmanaged<AnyObject>! {
         return self.performSelector(selector, withArgs: args)
     }
 }

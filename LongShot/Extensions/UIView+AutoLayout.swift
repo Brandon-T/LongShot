@@ -34,14 +34,14 @@ extension UILayoutGuide: Constrainable {}
 
 public extension UIView {
     @discardableResult
-    public func pin(_ constraints: [NSLayoutConstraint]) -> Self {
+    func pin(_ constraints: [NSLayoutConstraint]) -> Self {
         NSLayoutConstraint.activate(constraints)
         self.translatesAutoresizingMaskIntoConstraints = false
         return self
     }
     
     @discardableResult
-    public func pin(to constrainable: Constrainable, insets: UIEdgeInsets = .zero) -> Self {
+    func pin(to constrainable: Constrainable, insets: UIEdgeInsets = .zero) -> Self {
         NSLayoutConstraint.activate([
             leftAnchor.constraint(equalTo: constrainable.leftAnchor, constant: insets.left),
             topAnchor.constraint(equalTo: constrainable.topAnchor, constant: insets.top),
@@ -55,7 +55,7 @@ public extension UIView {
     // MARK: -
     
     @discardableResult
-    public func pin(_ anchors: [ConstraintAnchor] = [.pinned(.zero)]) -> Self {
+    func pin(_ anchors: [ConstraintAnchor] = [.pinned(.zero)]) -> Self {
         if let superview = self.superview {
             return self.pin(to: superview, anchors)
         }
@@ -64,7 +64,7 @@ public extension UIView {
     }
     
     @discardableResult
-    public func pin(to constrainable: Constrainable, _ anchors: [ConstraintAnchor]) -> Self {
+    func pin(to constrainable: Constrainable, _ anchors: [ConstraintAnchor]) -> Self {
         anchors.compactMap({
             resolve($0, constrainable)
         }).forEach({

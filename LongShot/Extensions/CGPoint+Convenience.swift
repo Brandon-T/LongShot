@@ -10,27 +10,27 @@ import Foundation
 import UIKit
 
 public extension CGPoint {
-    public func distance(to: CGPoint) -> CGFloat {
+    func distance(to: CGPoint) -> CGFloat {
         let x = to.x - self.x
         let y = to.y - self.y
         return sqrt((x * x) + (y * y)) //sqrt(pow(to.x - self.x, 2) + pow(to.y - self.y, 2))
     }
     
-    public func distanceSq(to: CGPoint) -> CGFloat {
+    func distanceSq(to: CGPoint) -> CGFloat {
         let x = to.x - self.x
         let y = to.y - self.y
         return ((x * x) + (y * y))
     }
     
-    public func magnitude() -> CGFloat {
+    func magnitude() -> CGFloat {
         return sqrt((self.x * self.x) + (self.y * self.y))
     }
     
-    public func magnitudeSq() -> CGFloat {
+    func magnitudeSq() -> CGFloat {
         return ((self.x * self.x) + (self.y * self.y))
     }
     
-    public func normalized() -> CGPoint {
+    func normalized() -> CGPoint {
         let magnitude = self.magnitude()
         if (magnitude > 0) {
             var point = self
@@ -41,23 +41,23 @@ public extension CGPoint {
         return .zero
     }
     
-    public mutating func normalize() -> CGPoint {
+    mutating func normalize() -> CGPoint {
         let magnitude = self.magnitude()
         self.x /= magnitude
         self.y /= magnitude
         return self
     }
     
-    public func angleXY() -> CGFloat {
+    func angleXY() -> CGFloat {
         return atan2(self.y, self.x)
     }
     
-    public func rotated(around point: CGPoint, byAngle radians: CGFloat) -> CGPoint {
+    func rotated(around point: CGPoint, byAngle radians: CGFloat) -> CGPoint {
         let transform = CGAffineTransform(translationX: -point.x, y: -point.y).rotated(by: radians).translatedBy(x: point.x, y: point.y)
         return self.applying(transform)
     }
     
-    public func rotated(around point: CGPoint, byDegrees degrees: CGFloat) -> CGPoint {
+    func rotated(around point: CGPoint, byDegrees degrees: CGFloat) -> CGPoint {
         let rotationSin = sin(degrees.toRadians())
         let rotationCos = cos(degrees.toRadians())
         let x = (self.x * rotationCos - self.y * rotationSin) + point.x
@@ -65,7 +65,7 @@ public extension CGPoint {
         return CGPoint(x: x, y: y)
     }
     
-    public func pointAtAngle(origin: CGPoint, distance: CGFloat, radians: CGFloat) -> CGPoint {
+    func pointAtAngle(origin: CGPoint, distance: CGFloat, radians: CGFloat) -> CGPoint {
         return CGPoint(x: origin.x + distance * cos(radians), y: origin.y + distance * sin(radians))
     }
     
@@ -85,7 +85,7 @@ public extension CGPoint {
         self.y = y
     }
     
-    public mutating func offset(dx: CGFloat, dy: CGFloat) -> CGPoint {
+    mutating func offset(dx: CGFloat, dy: CGFloat) -> CGPoint {
         self.x += dx
         self.y += dy
         return self

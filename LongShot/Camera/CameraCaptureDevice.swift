@@ -116,6 +116,10 @@ public final class CameraCaptureDevice : UIView, AVCaptureMetadataOutputObjectsD
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted) in
                 completion(granted)
             })
+            
+        @unknown
+        default:
+            fatalError("Unknown Camera Permission")
         }
     }
     

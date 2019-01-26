@@ -22,14 +22,14 @@ public class Cryptography {
             kSecClass: kSecClassKey,
             kSecAttrApplicationTag: id.data(using: .utf8)!,
             kSecMatchLimit: kSecMatchLimitOne,
-            kSecReturnRef: kCFBooleanTrue
+            kSecReturnRef: kCFBooleanTrue as Any
         ]
         
         var result: CFTypeRef? = nil
         let error = SecItemCopyMatching(query as CFDictionary, &result)
         if error == errSecSuccess || error == errSecDuplicateItem || error == errSecInteractionNotAllowed {
             if let res = result {
-                return res as! SecKey
+                return (res as! SecKey)
             }
             return nil
         }
@@ -123,7 +123,7 @@ public class Cryptography {
             kSecClass: kSecClassKey,
             kSecAttrApplicationTag: id.data(using: .utf8)!,
             kSecMatchLimit: kSecMatchLimitOne,
-            kSecReturnAttributes: kCFBooleanTrue
+            kSecReturnAttributes: kCFBooleanTrue as Any
         ]
         
         var result: CFTypeRef? = nil

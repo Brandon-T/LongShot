@@ -9,11 +9,11 @@
 import Foundation
 
 public extension Sequence {
-    public func group<Key: Hashable>(predicate: (Iterator.Element) -> Key) -> [Key:[Iterator.Element]] {
+    func group<Key: Hashable>(predicate: (Iterator.Element) -> Key) -> [Key:[Iterator.Element]] {
         return Dictionary(grouping: self, by: predicate)
     }
     
-    public func group<U: Hashable>(by key: (Iterator.Element) -> U) -> [U:[Iterator.Element]] {
+    func group<U: Hashable>(by key: (Iterator.Element) -> U) -> [U:[Iterator.Element]] {
         var categories: [U: [Iterator.Element]] = [:]
         for element in self {
             let key = key(element)
@@ -24,7 +24,7 @@ public extension Sequence {
         return categories
     }
     
-    public func orderedGroup<GroupingType: Hashable>(by key: (Iterator.Element) -> GroupingType) -> [[Iterator.Element]] {
+    func orderedGroup<GroupingType: Hashable>(by key: (Iterator.Element) -> GroupingType) -> [[Iterator.Element]] {
         var groups: [GroupingType: [Iterator.Element]] = [:]
         forEach { element in
             let key = key(element)
@@ -38,7 +38,7 @@ public extension Sequence {
 
 public extension Optional where Wrapped == String {
     
-    public var isEmpty: Bool {
+    var isEmpty: Bool {
         switch self {
         case .none:
             return true
@@ -48,6 +48,7 @@ public extension Optional where Wrapped == String {
     }
 }
 
+#if compiler(<5)
 public extension Optional where Wrapped == Collection {
     
     public var isEmpty: Bool {
@@ -59,3 +60,16 @@ public extension Optional where Wrapped == Collection {
         }
     }
 }
+#else
+public extension Optional where Wrapped: Collection {
+    
+    var isEmpty: Bool {
+        switch self {
+        case .none:
+            return true
+        case .some(let collection):
+            return collection.isEmpty
+        }
+    }
+}
+#endif

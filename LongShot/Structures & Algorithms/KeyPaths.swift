@@ -51,7 +51,7 @@ extension KeyPath: ExpressibleByStringLiteral {
 }
 
 public extension Dictionary where Key: StringProtocol {
-    public subscript<T>(keyPath keyPath: KeyPath) -> T? {
+    subscript<T>(keyPath keyPath: KeyPath) -> T? {
         get {
             switch keyPath.next {
             case let (part, path)? where path.isEmpty:

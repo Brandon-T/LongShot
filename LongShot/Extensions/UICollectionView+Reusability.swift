@@ -19,7 +19,7 @@ public enum UICollectionElementKind {
 }
 
 public extension UICollectionView {
-    public func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
+    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         let identifier = String(describing: T.self)
         if let cell = self.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? T {
             return cell
@@ -27,7 +27,7 @@ public extension UICollectionView {
         fatalError("Cannot Dequeue Cell With Identifier \(identifier)")
     }
     
-    public func dequeueReusableView<T: UIView>(for indexPath: IndexPath, kind: UICollectionElementKind) -> T {
+    func dequeueReusableView<T: UIView>(for indexPath: IndexPath, kind: UICollectionElementKind) -> T {
         let identifier = String(describing: T.self)
         if let view = self.dequeueReusableSupplementaryView(ofKind: kind == .header ? UICollectionView.elementKindSectionHeader : UICollectionView.elementKindSectionFooter, withReuseIdentifier: identifier, for: indexPath) as? T {
             return view
@@ -35,12 +35,12 @@ public extension UICollectionView {
         fatalError("Cannot Dequeue View With Identifier \(identifier)")
     }
     
-    public func register<T: UICollectionViewCell>(cell _: T.Type) {
+    func register<T: UICollectionViewCell>(cell _: T.Type) {
         let identifier = String(describing: T.self)
         self.register(T.self, forCellWithReuseIdentifier: identifier)
     }
     
-    public func register<T: UIView>(view _: T.Type, kind: UICollectionElementKind) {
+    func register<T: UIView>(view _: T.Type, kind: UICollectionElementKind) {
         let identifier = String(describing: T.self)
         self.register(T.self, forSupplementaryViewOfKind: kind == .header ? UICollectionView.elementKindSectionHeader : UICollectionView.elementKindSectionFooter, withReuseIdentifier: identifier)
     }

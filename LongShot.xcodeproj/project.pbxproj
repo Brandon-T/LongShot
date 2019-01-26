@@ -19,6 +19,13 @@
 		5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E593F83200EDB04005070BC /* Timer+Events.swift */; };
 		5E5EB7E12001565000C55CE4 /* CALayer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */; };
 		5E5EB7E32001708800C55CE4 /* CGPoint+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5EB7E22001708800C55CE4 /* CGPoint+Convenience.swift */; };
+		5E6F739521E42022002C3758 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F739021E42022002C3758 /* Client.swift */; };
+		5E6F739621E42022002C3758 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F739121E42022002C3758 /* Request.swift */; };
+		5E6F739721E42022002C3758 /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F739221E42022002C3758 /* ResponseWrapper.swift */; };
+		5E6F739821E42022002C3758 /* URLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F739321E42022002C3758 /* URLEncoder.swift */; };
+		5E6F739921E42022002C3758 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F739421E42022002C3758 /* Endpoint.swift */; };
+		5E6F739B21E42176002C3758 /* ByteBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F739A21E42176002C3758 /* ByteBuffer.swift */; };
+		5E6F739E21E42384002C3758 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F739D21E42384002C3758 /* JSONParser.swift */; };
 		5E7818C32161895C0012357A /* TaskQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C22161895C0012357A /* TaskQueue.swift */; };
 		5E7818C521619B550012357A /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C421619B550012357A /* Cipher.swift */; };
 		5E7818C72161A1150012357A /* PresentationFrameAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7818C62161A1150012357A /* PresentationFrameAnimator.swift */; };
@@ -79,6 +86,13 @@
 		5E593F83200EDB04005070BC /* Timer+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Events.swift"; sourceTree = "<group>"; };
 		5E5EB7E02001565000C55CE4 /* CALayer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Convenience.swift"; sourceTree = "<group>"; };
 		5E5EB7E22001708800C55CE4 /* CGPoint+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Convenience.swift"; sourceTree = "<group>"; };
+		5E6F739021E42022002C3758 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		5E6F739121E42022002C3758 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		5E6F739221E42022002C3758 /* ResponseWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
+		5E6F739321E42022002C3758 /* URLEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEncoder.swift; sourceTree = "<group>"; };
+		5E6F739421E42022002C3758 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		5E6F739A21E42176002C3758 /* ByteBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteBuffer.swift; sourceTree = "<group>"; };
+		5E6F739D21E42384002C3758 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		5E7818C22161895C0012357A /* TaskQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskQueue.swift; sourceTree = "<group>"; };
 		5E7818C421619B550012357A /* Cipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
 		5E7818C62161A1150012357A /* PresentationFrameAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFrameAnimator.swift; sourceTree = "<group>"; };
@@ -181,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				5EC76D40200BEFC20049DA61 /* MemoryMap.swift */,
+				5E6F739A21E42176002C3758 /* ByteBuffer.swift */,
 			);
 			path = Native;
 			sourceTree = "<group>";
@@ -199,6 +214,26 @@
 				5E593F80200E3221005070BC /* ImageCache.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		5E6F738F21E42022002C3758 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5E6F739021E42022002C3758 /* Client.swift */,
+				5E6F739121E42022002C3758 /* Request.swift */,
+				5E6F739221E42022002C3758 /* ResponseWrapper.swift */,
+				5E6F739321E42022002C3758 /* URLEncoder.swift */,
+				5E6F739421E42022002C3758 /* Endpoint.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5E6F739C21E42378002C3758 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				5E6F739D21E42384002C3758 /* JSONParser.swift */,
+			);
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 		5E705069200AFA8000736065 /* CoreGraphics */ = {
@@ -256,6 +291,8 @@
 		5E92CB401FFB267A0081A255 /* LongShot */ = {
 			isa = PBXGroup;
 			children = (
+				5E6F739C21E42378002C3758 /* Parsers */,
+				5E6F738F21E42022002C3758 /* Networking */,
 				5E55D03A20B232590036A96C /* Observation */,
 				5E5310CA200BE728005334D8 /* Native */,
 				5EC76D45200C24500049DA61 /* Future */,
@@ -448,7 +485,7 @@
 				TargetAttributes = {
 					5E92CB3D1FFB267A0081A255 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -459,6 +496,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 5E92CB341FFB267A0081A255;
 			productRefGroup = 5E92CB3F1FFB267A0081A255 /* Products */;
@@ -504,7 +542,9 @@
 			files = (
 				5E92CB691FFB46340081A255 /* Transformation+Algorithm.swift in Sources */,
 				5E55D03C20B232670036A96C /* Observer.swift in Sources */,
+				5E6F739E21E42384002C3758 /* JSONParser.swift in Sources */,
 				5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */,
+				5E6F739721E42022002C3758 /* ResponseWrapper.swift in Sources */,
 				5E92CB531FFB32560081A255 /* NSObject+Association.swift in Sources */,
 				5E92CB611FFB3D770081A255 /* UITableView+Reusability.swift in Sources */,
 				5E92CB5B1FFB380B0081A255 /* Number+Convenience.swift in Sources */,
@@ -512,6 +552,7 @@
 				5E890A21216EEE4300D7A53A /* Preferences.swift in Sources */,
 				5E593F84200EDB04005070BC /* Timer+Events.swift in Sources */,
 				5E92CB5D1FFB3B120081A255 /* String+Convenience.swift in Sources */,
+				5E6F739921E42022002C3758 /* Endpoint.swift in Sources */,
 				5E92CB801FFB4C690081A255 /* Runtime.swift in Sources */,
 				5E92CB551FFB32900081A255 /* UIView+AutoLayout.swift in Sources */,
 				5E92CB511FFB32210081A255 /* UIControl+Events.swift in Sources */,
@@ -531,12 +572,16 @@
 				5E92CB731FFB48AA0081A255 /* OrderedDictionary.swift in Sources */,
 				5E92CB591FFB37E40081A255 /* UIFont+Utilities.swift in Sources */,
 				5EC76D44200C055B0049DA61 /* Promise.swift in Sources */,
+				5E6F739821E42022002C3758 /* URLEncoder.swift in Sources */,
 				5E92CB861FFB4DA20081A255 /* Invocation.swift in Sources */,
 				5E92CB881FFB4E800081A255 /* ProtocolInjection.swift in Sources */,
 				5E3C37E4200059B700B24EA3 /* DisplayLinkAnimator.swift in Sources */,
 				5E7818C92161A27C0012357A /* UIView+Keyboard.swift in Sources */,
 				5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */,
+				5E6F739B21E42176002C3758 /* ByteBuffer.swift in Sources */,
 				5E92CB571FFB36830081A255 /* UIColor+Conversions.swift in Sources */,
+				5E6F739621E42022002C3758 /* Request.swift in Sources */,
+				5E6F739521E42022002C3758 /* Client.swift in Sources */,
 				5E92CB821FFB4C860081A255 /* Function.swift in Sources */,
 				5EB36E4A2134D6E300470253 /* UIBarButtonItem+Events.swift in Sources */,
 				5E5EB7E12001565000C55CE4 /* CALayer+Convenience.swift in Sources */,
@@ -700,7 +745,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -723,7 +768,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

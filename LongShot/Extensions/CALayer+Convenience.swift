@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 public extension CALayer {
-    public func sublayer(named: String) -> CALayer? {
+    func sublayer(named: String) -> CALayer? {
         return self.sublayers?.first(where: { $0.name == named })
     }
     
-    public func roundLayer(_ corners: UIRectCorner, cornerRadius: CGFloat) -> CALayer {
+    func roundLayer(_ corners: UIRectCorner, cornerRadius: CGFloat) -> CALayer {
         let layer = CAShapeLayer()
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
         layer.path = path.cgPath
@@ -23,7 +23,7 @@ public extension CALayer {
         return layer
     }
     
-    public func shadowLayer(_ radius: CGFloat, opacity: CGFloat, colour: UIColor = .black, offset: CGPoint = .zero, cornerRadius: CGFloat? = nil) -> CALayer {
+    func shadowLayer(_ radius: CGFloat, opacity: CGFloat, colour: UIColor = .black, offset: CGPoint = .zero, cornerRadius: CGFloat? = nil) -> CALayer {
         let layer = CAShapeLayer()
         layer.shadowRadius = radius
         layer.shadowOpacity = Float(opacity)
@@ -39,7 +39,7 @@ public extension CALayer {
         return layer
     }
     
-    public func addMaskLayer(_ corners: UIRectCorner, cornerRadius: CGFloat, shadowRadius: CGFloat, shadowOpacity: CGFloat, shadowColour: UIColor = .black, shadowOffset: CGPoint = .zero) {
+    func addMaskLayer(_ corners: UIRectCorner, cornerRadius: CGFloat, shadowRadius: CGFloat, shadowOpacity: CGFloat, shadowColour: UIColor = .black, shadowOffset: CGPoint = .zero) {
         
         let shadowLayer = self.shadowLayer(shadowRadius, opacity: shadowOpacity, colour: shadowColour, offset: shadowOffset, cornerRadius: cornerRadius)
         

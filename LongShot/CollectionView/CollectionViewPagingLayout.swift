@@ -14,7 +14,7 @@ public extension UICollectionView {
     /// itemPeakAmount - how much of the next item to show/peak in pixels
     /// itemsPerRow - number of items per row to show in a horizontal collection view
     /// insets - section insets if any
-    public func widthForItemWithPeaking(_ itemSpacing: CGFloat, itemPeakAmount: CGFloat, itemsPerRow: Int = 1, insets: UIEdgeInsets = .zero) -> CGFloat {
+    func widthForItemWithPeaking(_ itemSpacing: CGFloat, itemPeakAmount: CGFloat, itemsPerRow: Int = 1, insets: UIEdgeInsets = .zero) -> CGFloat {
         var width = self.bounds.width - itemSpacing * CGFloat(itemsPerRow - 1)
         width -= insets.left + insets.right
         width -= itemPeakAmount
@@ -23,7 +23,7 @@ public extension UICollectionView {
     
     /// velocity - the velocity of the scrollView in `scrollViewWillEndDragging`
     /// targetContentOffset - the target offset of the scrollView in `scrollViewWillEndDragging`
-    public func pageIndexForPaging(_ velocity: CGPoint, targetContentOffset: CGPoint) -> Int? {
+    func pageIndexForPaging(_ velocity: CGPoint, targetContentOffset: CGPoint) -> Int? {
         var direction = UICollectionView.ScrollDirection.vertical
         
         if let scrollDirection = (self.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection {
@@ -51,7 +51,7 @@ public extension UICollectionView {
     
     /// velocity - the velocity of the scrollView in `scrollViewWillEndDragging`
     /// targetContentOffset - the target offset of the scrollView in `scrollViewWillEndDragging`
-    public func contentOffsetForPaging(_ velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func contentOffsetForPaging(_ velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var direction = UICollectionView.ScrollDirection.vertical
         
         if let scrollDirection = (self.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection {
@@ -75,7 +75,7 @@ public extension UICollectionView {
 
 public extension UICollectionViewLayout {
     
-    public func horizontalTargetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    func horizontalTargetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
         let rectBounds: CGRect = self.collectionView!.bounds
         let halfWidth: CGFloat = rectBounds.size.width * CGFloat(0.50)
@@ -108,7 +108,7 @@ public extension UICollectionViewLayout {
         return CGPoint(x: candidateAttributes!.center.x - halfWidth, y: proposedContentOffset.y)
     }
     
-    public func verticalTargetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    func verticalTargetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
         let rectBounds: CGRect = self.collectionView!.bounds
         let halfHeight: CGFloat = rectBounds.size.height * CGFloat(0.50)

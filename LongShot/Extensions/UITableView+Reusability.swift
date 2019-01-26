@@ -14,7 +14,7 @@ public protocol ReusableTableViewCell {
 }
 
 public extension UITableView {
-    public func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
+    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
         let identifier = String(describing: T.self)
         if let cell = self.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? T {
             return cell
@@ -22,7 +22,7 @@ public extension UITableView {
         fatalError("Cannot Dequeue Cell With Identifier \(identifier)")
     }
     
-    public func dequeueReusableView<T: UITableViewHeaderFooterView>(for indexPath: IndexPath) -> T {
+    func dequeueReusableView<T: UITableViewHeaderFooterView>(for indexPath: IndexPath) -> T {
         let identifier = String(describing: T.self)
         if let view = self.dequeueReusableHeaderFooterView(withIdentifier: identifier) as? T {
             return view
@@ -30,23 +30,23 @@ public extension UITableView {
         fatalError("Cannot Dequeue View With Identifier \(identifier)")
     }
     
-    public func register<T: UITableViewCell>(cell _: T.Type) {
+    func register<T: UITableViewCell>(cell _: T.Type) {
         let identifier = String(describing: T.self)
         self.register(T.self, forCellReuseIdentifier: identifier)
     }
     
-    public func register<T: UITableViewHeaderFooterView>(view _: T.Type) {
+    func register<T: UITableViewHeaderFooterView>(view _: T.Type) {
         let identifier = String(describing: T.self)
         self.register(T.self, forHeaderFooterViewReuseIdentifier: identifier)
     }
 }
 
 public extension UITableViewCell {
-    public func removeSeparatorInsets() {
+    func removeSeparatorInsets() {
         self.separatorInset = .zero
     }
     
-    public func removeSeparator() {
+    func removeSeparator() {
         self.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: UIScreen.main.bounds.width * 2.0)
     }
 }

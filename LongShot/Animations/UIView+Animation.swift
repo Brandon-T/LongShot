@@ -35,13 +35,13 @@ public protocol LayerPathAnimation {
 
 public extension CALayer {
     
-    public func animate(_ animations: (_ animation: LayerPathAnimation) -> Void) {
+    func animate(_ animations: (_ animation: LayerPathAnimation) -> Void) {
         let animation = LayerAnimation(self)
         animations(animation)
         animation.execute()
     }
     
-    public func animateGroup(_ animations: (_ group: LayerPathAnimation) -> Void) {
+    func animateGroup(_ animations: (_ group: LayerPathAnimation) -> Void) {
         let group = LayerAnimationGroup(self)
         animations(group)
         group.execute()

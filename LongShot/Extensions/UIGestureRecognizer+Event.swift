@@ -13,11 +13,11 @@ public extension UIGestureRecognizer {
     
     convenience init<T>(_ runnable: @escaping (_ recognizer: T) -> Void) where T: UIGestureRecognizer {
         self.init(target: nil, action: nil)
-        self.addEventHandler(runnable)
+        self.on(runnable)
     }
     
     @discardableResult
-    public func addEventHandler<T>(_ runnable: @escaping (_ recognizer: T) -> Void) -> RemovableTarget where T: UIGestureRecognizer {
+    func on<T>(_ runnable: @escaping (_ recognizer: T) -> Void) -> RemovableTarget where T: UIGestureRecognizer {
         return EventTarget(self) { (recognizer) in
             runnable(recognizer as! T)
         }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public extension UIFont {
-    public class func printFamilyNames() {
+    class func printFamilyNames() {
         for name in familyNames {
             print(fontNames(forFamilyName: name))
         }
