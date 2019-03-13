@@ -70,6 +70,8 @@
 		5EC76D47200C245D0049DA61 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D46200C245D0049DA61 /* Future.swift */; };
 		5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021B2000732C00E9817D /* Array+Utilities.swift */; };
 		5ECD021E2000864500E9817D /* UIApplication+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */; };
+		5ECFC8BD2238995100D2FE13 /* InputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFC8BC2238995100D2FE13 /* InputStream.swift */; };
+		5ECFC8BF2238995900D2FE13 /* OutputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFC8BE2238995900D2FE13 /* OutputStream.swift */; };
 		5EF197892001C7D100061671 /* Target+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF197882001C7D100061671 /* Target+Events.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,8 @@
 		5EC76D46200C245D0049DA61 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		5ECD021B2000732C00E9817D /* Array+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utilities.swift"; sourceTree = "<group>"; };
 		5ECD021D2000864500E9817D /* UIApplication+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Convenience.swift"; sourceTree = "<group>"; };
+		5ECFC8BC2238995100D2FE13 /* InputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStream.swift; sourceTree = "<group>"; };
+		5ECFC8BE2238995900D2FE13 /* OutputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStream.swift; sourceTree = "<group>"; };
 		5EF197882001C7D100061671 /* Target+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Target+Events.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,13 +254,6 @@
 			path = Bluetooth;
 			sourceTree = "<group>";
 		};
-		5E868A80200299C20000B38C /* Sockets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Sockets;
-			sourceTree = "<group>";
-		};
 		5E868A81200299C80000B38C /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +288,7 @@
 		5E92CB401FFB267A0081A255 /* LongShot */ = {
 			isa = PBXGroup;
 			children = (
+				5ECFC8BB2238992500D2FE13 /* Socket */,
 				5E6F739C21E42378002C3758 /* Parsers */,
 				5E6F738F21E42022002C3758 /* Networking */,
 				5E55D03A20B232590036A96C /* Observation */,
@@ -301,7 +299,6 @@
 				5E705069200AFA8000736065 /* CoreGraphics */,
 				5E868A82200299CC0000B38C /* Video */,
 				5E868A81200299C80000B38C /* Audio */,
-				5E868A80200299C20000B38C /* Sockets */,
 				5E868A7F200299B90000B38C /* Bluetooth */,
 				5E3C37EB2000661A00B24EA3 /* Errors */,
 				5E3C37E520005EFD00B24EA3 /* Camera */,
@@ -441,6 +438,15 @@
 			path = Future;
 			sourceTree = "<group>";
 		};
+		5ECFC8BB2238992500D2FE13 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				5ECFC8BC2238995100D2FE13 /* InputStream.swift */,
+				5ECFC8BE2238995900D2FE13 /* OutputStream.swift */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -577,9 +583,11 @@
 				5E92CB881FFB4E800081A255 /* ProtocolInjection.swift in Sources */,
 				5E3C37E4200059B700B24EA3 /* DisplayLinkAnimator.swift in Sources */,
 				5E7818C92161A27C0012357A /* UIView+Keyboard.swift in Sources */,
+				5ECFC8BF2238995900D2FE13 /* OutputStream.swift in Sources */,
 				5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */,
 				5E6F739B21E42176002C3758 /* ByteBuffer.swift in Sources */,
 				5E92CB571FFB36830081A255 /* UIColor+Conversions.swift in Sources */,
+				5ECFC8BD2238995100D2FE13 /* InputStream.swift in Sources */,
 				5E6F739621E42022002C3758 /* Request.swift in Sources */,
 				5E6F739521E42022002C3758 /* Client.swift in Sources */,
 				5E92CB821FFB4C860081A255 /* Function.swift in Sources */,
