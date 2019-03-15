@@ -282,7 +282,7 @@ class KeychainCryptography {
                                                      nil)!
         
         guard let key = try Cryptography.generateKey(id: tag, type: .ecsecPrimeRandom, bits: 256, storeInKeychain: true, deleteExisting: false, secureEnclave: true, controlFlags: access) else {
-            throw KeychainEncryptionError(code: -1, description: "Unable to generate Secure Enclave Key")
+            throw CryptographyError(code: -1, description: "Unable to generate Secure Enclave Key")
         }
         return key
     }
