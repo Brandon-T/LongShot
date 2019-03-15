@@ -42,6 +42,28 @@ public class SecureKey {
         self.base64Key = key
     }
     
+    public init(filePath: String) {
+        if let data = NSData(contentsOfFile: filePath) {
+            if let certificate = SecCertificateCreateWithData(kCFAllocatorDefault, data) {
+                var trust: SecTrust?
+                let trustPolicy = SecPolicyCreateBasicX509()
+                if SecTrustCreateWithCertificates(certificate, trustPolicy, &trust) == noErr, let trust = trust {
+                    var result: SecTrustResultType = .invalid
+                    if SecTrustEvaluate(trust, &result) == noErr {
+                        self.key = SecTrustCopyPublicKey(trust)
+                    }
+                }
+            }
+        }
+        
+        if let key = self.key {
+            var error: Unmanaged<CFError>?
+            if let data = SecKeyCopyExternalRepresentation(key, &error) {
+                self.base64Key = (data as Data).base64EncodedString()
+            }
+        }
+    }
+    
     public init(certificate: SecCertificate) {
         var trust: SecTrust?
         let trustPolicy = SecPolicyCreateBasicX509()
