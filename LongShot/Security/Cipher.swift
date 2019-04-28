@@ -20,7 +20,7 @@ public class Cipher {
         var bytes = [UInt8](repeating: 0, count: length)
         let status = SecRandomCopyBytes(kSecRandomDefault, length, &bytes)
         if status == errSecSuccess {
-            return Data(bytes: bytes)
+            return Data(bytes)
         }
         
         throw RuntimeError(String(format: "Unable to generate random: %d", status))
@@ -32,18 +32,18 @@ public class Cipher {
         
         if hash == .sha1 {
             _ = data.withUnsafeBytes {
-                CC_SHA1($0, CC_LONG(data.count), &bytes)
+                CC_SHA1($0.baseAddress, CC_LONG(data.count), &bytes)
             }
         } else if hash == .sha256 {
             _ = data.withUnsafeBytes {
-                CC_SHA256($0, CC_LONG(data.count), &bytes)
+                CC_SHA256($0.baseAddress, CC_LONG(data.count), &bytes)
             }
         } else if hash == .sha512 {
             _ = data.withUnsafeBytes {
-                CC_SHA512($0, CC_LONG(data.count), &bytes)
+                CC_SHA512($0.baseAddress, CC_LONG(data.count), &bytes)
             }
         }
-        return Data(bytes: bytes)
+        return Data(bytes)
     }
     
     public static func HMAC(_ hash: Hash, consumerKey: String, secret: String, timestamp: TimeInterval = Date().timeIntervalSinceNow) -> Data? {
@@ -63,7 +63,7 @@ public class Cipher {
         
         salt.withUnsafeBytes { saltBytes in
             key.withUnsafeBytes { keyBytes in
-                CCHmac(algorithm, keyBytes, key.count, saltBytes, salt.count, signature)
+                CCHmac(algorithm, keyBytes.baseAddress, key.count, saltBytes.baseAddress, salt.count, signature)
             }
         }
         

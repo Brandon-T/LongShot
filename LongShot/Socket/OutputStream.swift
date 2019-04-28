@@ -20,7 +20,7 @@ extension OutputStream {
         
         while bytesRemaining > 0 {
             let count = data.withUnsafeBytes {
-                self.write($0.advanced(by: bytesWritten), maxLength: bytesRemaining)
+                self.write($0.baseAddress!.assumingMemoryBound(to: UInt8.self).advanced(by: bytesWritten), maxLength: bytesRemaining)
             }
             
             if count == 0 {

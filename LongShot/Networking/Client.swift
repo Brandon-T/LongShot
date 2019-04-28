@@ -212,7 +212,7 @@ extension Client {
     private static func sha1FingerPrint(data: Data) -> String {
         var bytes = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
         data.withUnsafeBytes {
-            _ = CC_SHA1($0, CC_LONG(data.count), &bytes)
+            _ = CC_SHA1($0.baseAddress, CC_LONG(data.count), &bytes)
         }
         
         var fingerPrint = String()
