@@ -186,7 +186,7 @@ extension Client {
             else {
                 return promise.reject(error)
             }
-        }).task
+        })
         #else
         /// Create a promise that encapsulates the raw request callback
         let promise = RequestCompletion<RequestSuccess<U>>({ _ in }, { _ in })

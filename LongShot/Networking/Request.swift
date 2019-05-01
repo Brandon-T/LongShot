@@ -41,16 +41,16 @@ public class Request<T>: RequestBase<T> {
     #if canImport(Alamofire)
     /// Creates a request
     /// Use this initializer when the request should be executed immediately
-    internal init(_ session: Client, endpoint: Endpoint<T>, task: URLSessionTask?, promise: RequestCompletion<RequestSuccess<T>>) {
+    internal init(_ session: Client, endpoint: Endpoint<T>, task: DataRequest, promise: RequestCompletion<RequestSuccess<T>>) {
         self.sessionManager = session
         self.endpoint = endpoint
-        self.task = task
+        self.task = task.task
         
         super.init(nil, task: { resolve, reject in
             promise.resolve = resolve
             promise.reject = reject
         })
-        task?.resume()
+        task.resume()
     }
     
     /// Creates a request
