@@ -8,6 +8,7 @@
 
 import Foundation
 
+#if !canImport(Alamofire)
 protocol URLEncoder {
     associatedtype ParamterType
     
@@ -62,3 +63,4 @@ struct JSONURLEncoder: URLEncoder {
         return urlRequest
     }
 }
+#endif

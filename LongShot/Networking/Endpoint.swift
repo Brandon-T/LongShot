@@ -8,8 +8,12 @@
 
 import Foundation
 
+#if canImport(Alamofire)
+import Alamofire
+#endif
+
 /// An enum representing the type of HTTP request.
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case GET
     case HEAD
     case POST
@@ -21,7 +25,7 @@ enum HTTPMethod: String {
 /// The type of endpoint query being used. For example, if we want to serialize the request with a JSON body, we use .json..
 /// Otherwise we can serialize the request to the query parameters using .query..
 /// And .data for raw data serialization.
-enum EndpointParameter {
+public enum EndpointParameter {
     case json([String: Any])
     case data(Data)
     case query([String: Any])
@@ -50,16 +54,24 @@ enum EndpointParameter {
 
 /// The endpoint structure that defines which server endpoint to hit for the request.
 public struct Endpoint<T> {
-    var method: HTTPMethod
-    var baseURL: String?
-    var path: String
-    var parameters: EndpointParameter?
-    var headers: [String: String]
-    var shouldHandleCookies: Bool
+    private(set) public var method: HTTPMethod
+    private(set) public var baseURL: String?
+    private(set) public var path: String
+    private(set) public var parameters: EndpointParameter?
+    private(set) public var headers: [String: String]
+    private(set) public var shouldHandleCookies: Bool
     
-    init(_ method: HTTPMethod, _ path: String, parameters: EndpointParameter? = nil, headers: [String: String]? = nil, shouldHandleCookies: Bool = true) {
+    public init(_ method: HTTPMethod, _ path: String, parameters: EndpointParameter? = nil, headers: [String: String]? = nil, shouldHandleCookies: Bool = true) {
+        
+        if let url = URL(string: path) {
+            self.baseURL = url.scheme?.appending("://").appending(url.host ?? "")
+            self.path = url.path
+        }
+        else {
+            self.baseURL = nil
+        }
+        
         self.method = method
-        self.baseURL = nil
         self.path = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? path
         self.parameters = parameters
         self.headers = headers ?? [:]
@@ -67,6 +79,31 @@ public struct Endpoint<T> {
     }
     
     func encode(_ baseURL: String? = nil) throws -> URLRequest? {
+        #if canImport(Alamofire)
+        guard let baseURL = URL(string: baseURL ?? self.baseURL ?? "") else { return nil }
+        guard let url = URL(string: path, relativeTo: baseURL) else { return nil }
+        var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30.0)
+        
+        request.httpMethod = method.rawValue
+        headers.forEach({ request.setValue($0.value, forHTTPHeaderField: $0.key) })
+        request.httpShouldHandleCookies = shouldHandleCookies
+        
+        if let parameters = parameters {
+            switch parameters {
+            case .json(let json):
+                request = try JSONEncoding.default.encode(request, with: json)
+                
+            case .data(let data):
+                request.setValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
+                request.httpBody = data
+                
+            case .query(let query):
+                request = try URLEncoding.default.encode(request, with: query)
+            }
+        }
+        
+        return request
+        #else
         guard let baseURL = URL(string: baseURL ?? self.baseURL ?? "") else { return nil }
         guard let url = URL(string: path, relativeTo: baseURL) else { return nil }
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30.0)
@@ -89,6 +126,7 @@ public struct Endpoint<T> {
         }
         
         return request
+        #endif
     }
     
     //Not necessary but it was when I first wrote this class to act as a coercive function..

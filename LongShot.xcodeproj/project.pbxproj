@@ -65,6 +65,7 @@
 		5E9436BD1FFDCE700038DE97 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */; };
 		5EB36E4A2134D6E300470253 /* UIBarButtonItem+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB36E492134D6E300470253 /* UIBarButtonItem+Events.swift */; };
 		5EB36E4C2134DA7B00470253 /* UIStackView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB36E4B2134DA7B00470253 /* UIStackView+Convenience.swift */; };
+		5EC66F79227A152500247E68 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC66F78227A152500247E68 /* RequestToken.swift */; };
 		5EC76D41200BEFC20049DA61 /* MemoryMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D40200BEFC20049DA61 /* MemoryMap.swift */; };
 		5EC76D44200C055B0049DA61 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D43200C055B0049DA61 /* Promise.swift */; };
 		5EC76D47200C245D0049DA61 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC76D46200C245D0049DA61 /* Future.swift */; };
@@ -136,6 +137,7 @@
 		5E9436BC1FFDCE700038DE97 /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 		5EB36E492134D6E300470253 /* UIBarButtonItem+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Events.swift"; sourceTree = "<group>"; };
 		5EB36E4B2134DA7B00470253 /* UIStackView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Convenience.swift"; sourceTree = "<group>"; };
+		5EC66F78227A152500247E68 /* RequestToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
 		5EC76D40200BEFC20049DA61 /* MemoryMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryMap.swift; sourceTree = "<group>"; };
 		5EC76D43200C055B0049DA61 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		5EC76D46200C245D0049DA61 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		5E6F738F21E42022002C3758 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5EC66F78227A152500247E68 /* RequestToken.swift */,
 				5E6F739021E42022002C3758 /* Client.swift */,
 				5E6F739121E42022002C3758 /* Request.swift */,
 				5E6F739221E42022002C3758 /* ResponseWrapper.swift */,
@@ -577,6 +580,7 @@
 				5E92CB631FFB3D980081A255 /* UICollectionView+Reusability.swift in Sources */,
 				5E92CB731FFB48AA0081A255 /* OrderedDictionary.swift in Sources */,
 				5E92CB591FFB37E40081A255 /* UIFont+Utilities.swift in Sources */,
+				5EC66F79227A152500247E68 /* RequestToken.swift in Sources */,
 				5EC76D44200C055B0049DA61 /* Promise.swift in Sources */,
 				5E6F739821E42022002C3758 /* URLEncoder.swift in Sources */,
 				5E92CB861FFB4DA20081A255 /* Invocation.swift in Sources */,

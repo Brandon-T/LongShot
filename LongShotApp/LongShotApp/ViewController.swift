@@ -166,6 +166,28 @@ class ViewController: UIViewController, UINavigationBarDelegate {
         foo.value = "Brandon"
         observer.dispose()
         foo.value = "Meh"
+        
+        Client.default.requestInterceptor = NetworkRequestInterceptor(
+            renewSession: Client.default.task(endpoint: Endpoint<String>(.GET, "https://stackoverflow.com/")),
+            onTokenRenewed: { client, token, error in
+                
+                if let token = token {
+                    print("Token Renewed: \(token)")
+                    
+                    //MUST BE SYNCHRONOUS! Do NOT dispatch to any other threads..
+                    //<#client.shared.token = token#>
+                }
+                else {
+                    //Handling here can be asynchronous or synchronous..
+                    if let error = error {
+                        print("Error Renewing Token: \(error)")
+                    }
+                    
+                    //<#client.shared.token = nil#>
+                    
+                    //<#Logout User#>
+                }
+        })
     }
 
     override func didReceiveMemoryWarning() {
