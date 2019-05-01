@@ -47,7 +47,7 @@ public class Client: NSObject {
     
     /// Handle alamofire requests
     #if canImport(Alamofire)
-    private var sessionManager: Session {
+    private lazy var sessionManager: Session = {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = nil
         configuration.urlCache = nil
@@ -55,23 +55,22 @@ public class Client: NSObject {
         let authenticationMethods = ServerTrustManager(allHostsMustBeEvaluated: false, evaluators: [:])
         
         return Session(configuration: configuration, startRequestsImmediately: false, interceptor: nil, serverTrustManager: authenticationMethods)
-    }
+    }()
     #else
-    
     /// A dictionary with a list of domains and their TrustAuthentication (security implementations)
     /// Use this to implement SSL pinning or certificate trust
     private var authenticationMethods = [String: TrustAuthentication]()
     
     /// The Session Manager.. We can implement certificate pinning here to prevent MITM attack or implement Basic OAuth authentication here..
-    private var sessionManager: URLSession {
+    private lazy var sessionManager: URLSession = {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = nil
         configuration.urlCache = nil
         
         self.authenticationMethods = [:]
         
-        return URLSession.init(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
-    }
+        return URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+    }()
     #endif
     
     // MARK: - Tasks
