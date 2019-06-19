@@ -8,6 +8,21 @@
 
 import Foundation
 
+
+/*
+* Swift Implementation for some commonly used Sorting & Searching Algorithms
+*
+* Insertion Sort using in place Array - (Fast sorting algorithm in smaller data size)
+*
+* Merge Sort as an example of Divide & Conquer Sort Algorithm
+*
+* Binary Search as a Divide & Conquer Search Algorithm
+*
+* Work In Progress:
+* - Quick Sort Algorithm
+*/
+
+
 /// Implementation of Insertion Sort Algorithm using a generic Array
 ///
 /// Insertion sort is a simple sorting algorithm that builds the final sorted array (or list)
@@ -152,4 +167,66 @@ func merge<T: Comparable>(_ leftArray: [T], _ rightArray: [T]) -> [T] {
     
     
     return resultArray
+}
+
+
+/// Implementation of Binart Search Algorithm in swift using Range
+///
+/// Binary search, also known as half-interval search,[1] logarithmic search,[2] or binary chop,[3]
+/// is a search algorithm that finds the position of a target value within a sorted array
+///
+/// Binary search is a divide and conquer algorithm which can search very fast in SORTED LIST
+///
+/// Binary search runs in logarithmic time in the worst case, making O(log n) comparisons
+///
+/// Binary Search is a efficient searching algorithm
+/// So in some cases it might be a good practice to sort first and use binary search
+///
+/// How it works: Conceptually, a binary search works as follows:
+/// Binary search begins by comparing the middle element of the array with the target value
+/// The target value matches the middle element, its position in the array is returned
+/// The target value is less than the middle element, the search continues in the lower half of the array
+/// The target value is greater than the middle element, the search continues in the upper half of the array
+
+/// Usage:
+///
+/// var testArrayBinarySearch = [2, 4, 5, 6, 7, 8, 9]
+///
+/// let searchResult = binarySearch(testArrayBinarySearch, for: 6)
+///
+/// if let result = searchResult {
+///     print("\(result)")
+/// }
+///
+///      ->  Divide array into pieces and small chunks and choose left or right side recursively
+///
+///             2 - 3 - 4 - 5    6 - 8 - 9 - 10
+///             2 - 3   4 -5
+///                 3 - 4
+///
+///      ->  Continue breaking into pieces until you find the element or return
+
+func binarySearch<T: Comparable>(_ array: [T], for element: T, in range:Range<Int>? = nil) -> Int? {
+    
+    // Check if it is the initial call or divide call
+    let range = range ?? 0..<array.count
+    
+    // Exit Condition when we cant divide anymore
+    guard range.lowerBound < range.upperBound else {
+        return nil
+    }
+    
+    let size = range.upperBound - range.lowerBound
+    let middleIndex = range.lowerBound + size / 2
+    
+    if array[middleIndex] == element {
+        return middleIndex
+    }
+    else if array[middleIndex] > element {
+        return binarySearch(array, for: element, in: range.lowerBound..<middleIndex)
+    }
+    else {
+        return binarySearch(array, for: element, in: middleIndex+1..<range.upperBound)
+    }
+    
 }
