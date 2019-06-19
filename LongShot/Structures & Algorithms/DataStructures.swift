@@ -9,6 +9,22 @@
 import Foundation
 
 
+/*
+ *
+ * Swift Implementation for some commonly used Data Structures
+ *
+ * Stack using in place Array
+ *
+ * Queue using a single Array
+ *
+ * QueueStack (Faster enqueue operation Queue) using a double Array
+ *
+ * Work In Progress:
+ * - Queue implementation using Stack created
+ * - Binary Tree implementation including Traversing function
+ */
+
+
 /// Implementation of Stack Data Type in Swift
 ///
 /// Stack is an abstract data type that serves as a collection of elements,
