@@ -191,3 +191,77 @@ extension Queue: ExpressibleByArrayLiteral {
     }
 }
 
+
+/// Implementation of Queue Data Type in Swift using Multi - Array as storage
+///
+/// The purpose of this implementation is to make the enqueue functionalty faster
+/// In order to achieve 2 Array structure is used as stacks
+///
+/// enqueue ->          ->          -> dequeue
+///             | 1 |       |   |
+///             | 2 |       |   |
+///             | 7 |       |   |
+///             | 5 |       |   |
+///             | 2 |       | 2 |
+///             _____       _____
+///            Stack 1      Stack 2
+///
+/// The advantage of this implementation is enque operation will not have to shift entire Array
+/// whenever a new item is enqueued. However the space complexity will increase because
+/// an additional stack will be used
+///
+struct QueueStack<Element> {
+    
+    private var dequeueStack: [Element] = []
+    private var enqueueStack: [Element] = []
+    
+    var isEmpty: Bool {
+        return dequeueStack.isEmpty && enqueueStack.isEmpty
+    }
+    
+    var count: Int {
+        return dequeueStack.count + enqueueStack.count
+    }
+    
+    var peek: Element? {
+        return !dequeueStack.isEmpty ? dequeueStack.last : enqueueStack.first
+    }
+    
+    mutating func enqueue(_ element: Element) {
+        enqueueStack.append(element)
+    }
+    
+    @discardableResult
+    mutating func dequeue() -> Element? {
+        if dequeueStack.isEmpty {
+            dequeueStack = enqueueStack.reversed()
+            enqueueStack.removeAll()
+        }
+        return dequeueStack.popLast()
+    }
+}
+
+/// Protocol for getting outline description of the queue stack
+extension QueueStack: CustomStringConvertible {
+    
+    var description: String {
+        
+        let enqueStackContent = enqueueStack
+            .map { "\($0)" }
+            .joined(separator: " ")
+        
+        let dequeueStackContent = dequeueStack
+            .map { "\($0)" }
+            .joined(separator: " ")
+        
+        return enqueStackContent + dequeueStackContent
+    }
+    
+}
+
+/// Protocol allows to initialize Queue Stack with Array
+extension QueueStack: ExpressibleByArrayLiteral {
+    init(arrayLiteral elements: Element...){
+        enqueueStack = elements
+    }
+}
