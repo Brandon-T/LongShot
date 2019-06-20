@@ -133,6 +133,17 @@ extension Stack: ExpressibleByArrayLiteral {
 /// A queue is an example of a linear data structure, or more abstractly a sequential collection.
 ///
 
+/// Protocol for Queue Data Structure Types
+/// Queue implementation with Array - Queue implementation with Stack
+protocol Queue {
+    associatedtype Element
+    mutating func enqueue(_ element: Element)
+    mutating func dequeue() -> Element?
+    var isEmpty: Bool { get }
+    var count: Int { get}
+    var peek: Element? { get }
+}
+
 /// Usage:
 ///
 /// var queue: Queue<Int> = Queue([])
@@ -149,7 +160,7 @@ extension Stack: ExpressibleByArrayLiteral {
 /// queue == queueLiteral
 ///
 
-struct Queue<Element> {
+struct QueueArray<Element>: Queue {
     
     //Data Storage
     private var storage: [Element] = [Element]()
@@ -172,7 +183,7 @@ struct Queue<Element> {
     }
     
     //Peek
-    func peek() -> Element? {
+    var peek: Element? {
         return storage.first
     }
     
@@ -190,7 +201,7 @@ struct Queue<Element> {
 }
 
 /// Protocol for getting outline description of the queue
-extension Queue: CustomStringConvertible {
+extension QueueArray: CustomStringConvertible {
     
     var description: String {
         return storage
@@ -201,7 +212,7 @@ extension Queue: CustomStringConvertible {
 }
 
 /// Protocol allows to initialize Queue with Array
-extension Queue: ExpressibleByArrayLiteral {
+extension QueueArray: ExpressibleByArrayLiteral {
     init(arrayLiteral elements: Element...){
         storage = elements
     }
@@ -226,7 +237,7 @@ extension Queue: ExpressibleByArrayLiteral {
 /// whenever a new item is enqueued. However the space complexity will increase because
 /// an additional stack will be used
 ///
-struct QueueStack<Element> {
+struct QueueStack<Element>: Queue {
     
     private var dequeueStack: [Element] = []
     private var enqueueStack: [Element] = []
