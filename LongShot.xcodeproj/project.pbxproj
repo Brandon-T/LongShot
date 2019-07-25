@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F72EB7122B93FF0003914AE /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F72EB7022B93FF0003914AE /* DataStructures.swift */; };
+		2F77A1FC22BAA5430068BB69 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77A1FB22BAA5430068BB69 /* Algorithms.swift */; };
 		5E05830B2002E6C3001CD80F /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05830A2002E6C3001CD80F /* UIView+Animation.swift */; };
 		5E3C37E4200059B700B24EA3 /* DisplayLinkAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37E3200059B700B24EA3 /* DisplayLinkAnimator.swift */; };
 		5E3C37E920005F4B00B24EA3 /* CameraCaptureDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37E820005F4B00B24EA3 /* CameraCaptureDevice.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		2F72EB7022B93FF0003914AE /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
+		2F77A1FB22BAA5430068BB69 /* Algorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithms.swift; sourceTree = "<group>"; };
 		5E05830A2002E6C3001CD80F /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		5E3C37E3200059B700B24EA3 /* DisplayLinkAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkAnimator.swift; sourceTree = "<group>"; };
 		5E3C37E820005F4B00B24EA3 /* CameraCaptureDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureDevice.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				5E7818CA2161A6400012357A /* Synchronization.swift */,
 				5E890A20216EEE4300D7A53A /* Preferences.swift */,
 				2F72EB7022B93FF0003914AE /* DataStructures.swift */,
+				2F77A1FB22BAA5430068BB69 /* Algorithms.swift */,
 			);
 			path = "Structures & Algorithms";
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				5E92CB701FFB47E40081A255 /* BaseViewController.swift in Sources */,
 				5E7818C521619B550012357A /* Cipher.swift in Sources */,
 				5E4C61F62002D51100602D81 /* UIScrollView+Utilities.swift in Sources */,
+				2F77A1FC22BAA5430068BB69 /* Algorithms.swift in Sources */,
 				5E92CB5F1FFB3B4A0081A255 /* NSDate+Convenience.swift in Sources */,
 				5E92CB7C1FFB4BF90081A255 /* Block.swift in Sources */,
 				5EC76D47200C245D0049DA61 /* Future.swift in Sources */,
