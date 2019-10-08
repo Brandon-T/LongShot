@@ -40,13 +40,15 @@ public class MemoryMap {
     /// Opens the memory map file (does not map it immediately into memory). If the file doesn't exist, it is created.
     ///
     /// - Returns: `true` if the file was successfully opened.
+	@discardableResult
     public func open() -> Bool {
         var dwFlags = self.readOnly ? O_RDONLY : O_RDWR
-        dwFlags |= (!readOnly && self.pSize > 0) ? (O_CREAT | O_TRUNC) : 0
+        dwFlags |= (!readOnly && self.pSize > 0) ? O_CREAT : 0
         self.hFile = Darwin.open(self.path, dwFlags, S_IRWXU)
         
         if self.hFile != -1 {
-            if !self.readOnly && self.pSize > 0 && ftruncate(self.hFile, off_t(self.pSize)) != -1 {
+            if !self.readOnly && self.pSize > 0 && ftruncate(self.hFile, off_t(self.pSize)) != -1
+			{
                 var info: stat = stat()
                 return fstat(self.hFile, &info) != -1 ? self.pSize == info.st_size : false;
             }
@@ -67,12 +69,17 @@ public class MemoryMap {
     ///
     /// - Returns: `true` if the file was successfully mapped.
     public func map() -> Bool {
-        if self.pData == nil {
-            let dwAccess = self.readOnly ? PROT_READ : (PROT_READ | PROT_WRITE);
-            self.pData = mmap(nil, self.pSize, dwAccess, MAP_SHARED, self.hFile, 0);
-            return self.pData != MAP_FAILED;
-        }
-        return true
+		self.pData = map(offset: 0, size: self.pSize)
+		return self.pData != nil
+    }
+	
+	/// Maps a portion of the specified file into the process' address space.
+    ///
+    /// - Returns: `UnsafeMutableRawPointer` - A pointer to the portion of the map. `Nil` upon failure.
+	public func map(offset: Int, size: Int) -> UnsafeMutableRawPointer! {
+        let dwAccess = self.readOnly ? PROT_READ : (PROT_READ | PROT_WRITE);
+		let pData = mmap(nil, size, dwAccess, MAP_SHARED, self.hFile, off_t(offset));
+		return pData != MAP_FAILED ? pData : nil
     }
     
     
@@ -81,9 +88,17 @@ public class MemoryMap {
     /// - Returns: `true` if the file was unmapped.
     @discardableResult
     public func unmap() -> Bool {
-        let result = munmap(self.pData, self.pSize) == 0;
-        self.pData = nil
-        return result;
+		let result = unmap(offset: self.pData, size: self.pSize)
+		self.pData = nil
+		return result
+    }
+	
+	/// Unmaps the specified portion of file from memory, but does not close it.
+    ///
+    /// - Returns: `true` if the portion of the file was unmapped.
+    @discardableResult
+    public func unmap(offset: UnsafeMutableRawPointer!, size: Int) -> Bool {
+		return munmap(offset, size) == 0;
     }
     
     
@@ -120,10 +135,18 @@ public class MemoryMap {
     public var data: UnsafeMutableRawPointer? {
         return self.isMapped ? UnsafeMutableRawPointer(self.pData) : nil
     }
+	
+	public func flush() {
+		msync(self.pData, self.pSize, MS_ASYNC)
+	}
+	
+	public func flush(_ ptr: UnsafeMutableRawPointer, size: Int) {
+		msync(ptr, size, MS_ASYNC)
+	}
     
     
     /// The virtual memory page size of the machine in bytes.
-    public var granulariy: Int {
+    public class var granularity: Int {
         return sysconf(_SC_PAGESIZE)
     }
     

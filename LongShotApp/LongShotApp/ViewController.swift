@@ -155,18 +155,90 @@ class AnimatableLabel : UIView {
 class ViewController: UIViewController, UINavigationBarDelegate {
     
     private var foo = Observable<String>("Hello World")
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		let scrollView = UIScrollView()
+		view.addSubview(scrollView)
+		scrollView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+			scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			scrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
+		])
+		
+		let stackView = UIStackView()
+		stackView.axis = .vertical
+		scrollView.addSubview(stackView)
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			stackView.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor),
+			stackView.rightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.rightAnchor),
+			stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+			stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
+		])
+		
+		let links = ["", ""]
+		
+		var urls = [String]()
+		for i in 0..<links.count {
+			urls.append(links[i % 2])
+		}
+		
+		for _ in 0..<256 {
+			let imageView = UIImageView()
+			//imageView.contentMode = .scaleAspectFit
+			stackView.addArrangedSubview(imageView)
+		}
+		
+		let imageCache = ImageCache(maxEntries: 4)
+		
+		let group = DispatchGroup()
+		
+		for url in urls {
+			group.enter()
+			
+			if !imageCache.hasImage(for: url) {
+				URLSession(configuration: .default).dataTask(with: URL(string: url)!) { data, resp, err in
+					let image = UIImage(data: data!)!
+					imageCache.setImage(for: url, image: image)
+					
+					group.leave()
+				}.resume()
+			}
+			else {
+				group.leave()
+			}
+		}
+		
+		group.notify(queue: .main) {
+			var i: Int = 0
+			for view in stackView.arrangedSubviews {
+				let image = imageCache.image(for: urls[i])
+				(view as! UIImageView).image = image
+				i += 1
+				
+				if i == urls.count {
+					i = 0
+				}
+			}
+		}
+	}
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let observer = foo.observe { value, _ in
-            print(value)
-        }
-        
-        foo.value = "Brandon"
-        observer.dispose()
-        foo.value = "Meh"
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        let observer = foo.observe { value, _ in
+//            print(value)
+//        }
+//
+//        foo.value = "Brandon"
+//        observer.dispose()
+//        foo.value = "Meh"
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
