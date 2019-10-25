@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F72EB7122B93FF0003914AE /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F72EB7022B93FF0003914AE /* DataStructures.swift */; };
 		2F77A1FC22BAA5430068BB69 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F77A1FB22BAA5430068BB69 /* Algorithms.swift */; };
 		5E05830B2002E6C3001CD80F /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05830A2002E6C3001CD80F /* UIView+Animation.swift */; };
 		5E3C37E4200059B700B24EA3 /* DisplayLinkAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C37E3200059B700B24EA3 /* DisplayLinkAnimator.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F72EB7022B93FF0003914AE /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		2F77A1FB22BAA5430068BB69 /* Algorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithms.swift; sourceTree = "<group>"; };
 		5E05830A2002E6C3001CD80F /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		5E3C37E3200059B700B24EA3 /* DisplayLinkAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkAnimator.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				5E7818C22161895C0012357A /* TaskQueue.swift */,
 				5E7818CA2161A6400012357A /* Synchronization.swift */,
 				5E890A20216EEE4300D7A53A /* Preferences.swift */,
+				2F72EB7022B93FF0003914AE /* DataStructures.swift */,
 				2F77A1FB22BAA5430068BB69 /* Algorithms.swift */,
 			);
 			path = "Structures & Algorithms";
@@ -588,6 +591,7 @@
 				5E7818C92161A27C0012357A /* UIView+Keyboard.swift in Sources */,
 				5ECFC8BF2238995900D2FE13 /* OutputStream.swift in Sources */,
 				5ECD021C2000732C00E9817D /* Array+Utilities.swift in Sources */,
+				2F72EB7122B93FF0003914AE /* DataStructures.swift in Sources */,
 				5E6F739B21E42176002C3758 /* ByteBuffer.swift in Sources */,
 				5E92CB571FFB36830081A255 /* UIColor+Conversions.swift in Sources */,
 				5ECFC8BD2238995100D2FE13 /* InputStream.swift in Sources */,
